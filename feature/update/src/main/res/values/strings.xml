@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="update_title">App update</string>
+    <string name="update_installed">Installed version</string>
+    <string name="update_checking">Checking for updates…</string>
+    <string name="update_up_to_date">You have the latest version</string>
+    <string name="update_last_checked">Last checked %1$s</string>
+    <string name="update_check_again">Check again</string>
+    <string name="update_available">OmoAuto %1$s is available</string>
+    <string name="update_size">Download size %1$s</string>
+    <string name="update_whats_new">What\'s new</string>
+    <string name="update_download">Download and install</string>
+    <string name="update_open_page">Open release page</string>
+    <string name="update_downloading">Downloading OmoAuto %1$s…</string>
+    <string name="update_cancel">Cancel</string>
+    <string name="update_ready">OmoAuto %1$s is ready to install</string>
+    <string name="update_ready_body">Android will ask you to confirm. Your settings and saved motorcycles are kept.</string>
+    <string name="update_needs_permission">Allow \"Install unknown apps\" for OmoAuto, then come back and tap Install now.</string>
+    <string name="update_install">Install now</string>
+    <string name="update_failed_title">Update failed</string>
+    <string name="update_failed_network">Could not reach GitHub. Check your internet connection and try again.</string>
+    <string name="update_failed_checksum">The download was damaged (checksum mismatch) and was deleted. Try again.</string>
+    <string name="update_failed_invalid">The downloaded file is not a newer OmoAuto release, so it was not installed.</string>
+    <string name="update_failed_storage">Not enough storage to save the update.</string>
+    <string name="update_retry">Try again</string>
+    <string name="update_auto_title">Check automatically</string>
+    <string name="update_auto_caption">Checks about twice a day and notifies you when a new version is out.</string>
+    <string name="update_safety_note">Updates come only from the official releases at github.com/LogicSekai/OmoAuto and are checked before installing.</string>
+    <string name="update_disabled_title">Updates are managed by the store</string>
+    <string name="update_disabled_body">This copy of OmoAuto is updated through Google Play (or the place you installed it from).</string>
+</resources>

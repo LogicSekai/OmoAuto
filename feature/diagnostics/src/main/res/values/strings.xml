@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="diag_title">Diagnostics</string>
+    <string name="diag_excellent">Excellent!</string>
+    <string name="diag_good">Good connection</string>
+    <string name="diag_fair">Fair connection</string>
+    <string name="diag_poor">Weak connection</string>
+    <string name="diag_idle">Not streaming yet</string>
+    <string name="diag_score">Score</string>
+    <string name="diag_share">Share</string>
+    <string name="diag_copy">Copy</string>
+    <string name="diag_meter_fps">Frame rate</string>
+    <string name="diag_meter_bitrate">Bitrate</string>
+    <string name="diag_meter_write">Send time per frame</string>
+    <string name="diag_meter_stability">Stability</string>
+    <string name="diag_details">Connection details</string>
+    <string name="diag_row_link">Motorcycle</string>
+    <string name="diag_row_aa">Android Auto</string>
+    <string name="diag_row_display">Display</string>
+    <string name="diag_row_encoder">Encoder</string>
+    <string name="diag_row_output">Picture</string>
+    <string name="diag_row_frames">Sent/drawn/decoded</string>
+    <string name="diag_row_keyframes">Key frame requests</string>
+    <string name="diag_row_session">Session</string>
+    <string name="diag_events">Recent events</string>
+    <string name="diag_no_events">Nothing yet.</string>
+    <string name="diag_scope_note">Rates are what the phone sends, not what the motorcycle\'s screen shows. Share diagnostics if Android Auto doesn\'t reach your bike.</string>
+</resources>

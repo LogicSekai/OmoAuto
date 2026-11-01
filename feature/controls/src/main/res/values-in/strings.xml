@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="controls_title">Kontrol</string>
+    <string name="controls_back">Kembali</string>
+    <string name="controls_ready">Android Auto siap menerima perintah</string>
+    <string name="controls_not_ready">Mulai Android Auto dulu</string>
+    <string name="controls_left">Geser kiri</string>
+    <string name="controls_right">Geser kanan</string>
+    <string name="controls_back_key">Kembali</string>
+    <string name="controls_home_key">Beranda</string>
+    <string name="controls_parked">Gunakan hanya saat motor berhenti.</string>
+    <string name="controls_mode_media">Media</string>
+    <string name="controls_mode_remote">Remote</string>
+    <string name="controls_up">Geser atas</string>
+    <string name="controls_down">Geser bawah</string>
+    <string name="controls_hint_media">Tombol media untuk aplikasi yang sedang memutar. Untuk bernavigasi di Android Auto, pakai Remote atau Trackpad, atau ketuk gambar di atas.</string>
+    <string name="controls_hint_remote">Seperti remote TV: panah menggeser fokus, OK untuk memilih. Tahan panah untuk mengulang. Ketuk gambar di atas untuk menyentuh Android Auto langsung.</string>
+    <string name="controls_preview_on_bike">Sama dengan di motor · ketuk untuk mengontrol</string>
+    <string name="controls_preview_phone">Pratinjau di HP ini · ketuk untuk mengontrol</string>
+    <string name="controls_target_web">Mengontrol OmoWeb di layar motor</string>
+    <string name="controls_player_title">Pemutar media</string>
+    <string name="controls_player_caption">Untuk aplikasi yang sedang memutar: Spotify, YouTube Music, OmoWeb, dan lainnya.</string>
+    <string name="controls_player_previous">Sebelumnya</string>
+    <string name="controls_player_rewind">Mundur</string>
+    <string name="controls_player_play_pause">Putar / jeda</string>
+    <string name="controls_player_forward">Maju cepat</string>
+    <string name="controls_player_next">Berikutnya</string>
+    <string name="controls_web_inactive">Buka OmoWeb di layar motor untuk memakai tombol ini.</string>
+    <string name="controls_web_fullscreen">Layar penuh</string>
+    <string name="controls_mode_touch">Sentuh</string>
+    <string name="controls_touch_close">Tutup mode sentuh</string>
+</resources>

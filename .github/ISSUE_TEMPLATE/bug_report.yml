@@ -1,0 +1,54 @@
+name: Laporan bug / Bug report
+description: Laporkan masalah di OmoAuto
+title: "[Bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Terima kasih sudah melapor! Untuk **celah keamanan**, jangan pakai form ini; lihat SECURITY.md.
+  - type: textarea
+    id: what
+    attributes:
+      label: Apa yang terjadi?
+      description: Jelaskan masalahnya dan apa yang seharusnya terjadi.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Langkah reproduksi
+      placeholder: |
+        1. Nyalakan motor, Cari, pilih motor
+        2. Mulai Android Auto
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versi OmoAuto
+      description: Lihat menu Tentang, mis. 0.3.1 (301) · release
+    validations:
+      required: true
+  - type: input
+    id: phone
+    attributes:
+      label: HP, versi Android, versi Android Auto
+      placeholder: Xiaomi Redmi Note 12, Android 14, Android Auto 13.4
+    validations:
+      required: true
+  - type: input
+    id: bike
+    attributes:
+      label: Model motor / layar OMOWAY
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostik
+      description: Tempel hasil **Diagnostik › Salin** dari aplikasi.
+      render: text
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshot / info tambahan

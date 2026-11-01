@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="support_title">Dukung OmoAuto</string>
+    <string name="support_hero_title">Gratis dan open source</string>
+    <string name="support_hero_body">OmoAuto dibuat oleh komunitas Logic Sekai. Dukunganmu membiayai pengembangan, pengujian di lebih banyak HP, dan fitur baru.</string>
+    <string name="support_section_donate">Donasi</string>
+    <string name="support_sponsor">GitHub Sponsors</string>
+    <string name="support_sponsor_caption">Sponsor repository · sekaligus lisensi komersial</string>
+    <string name="support_kofi">Ko-fi</string>
+    <string name="support_kofi_caption">Traktir kopi · PayPal atau kartu</string>
+    <string name="support_trakteer">Trakteer</string>
+    <string name="support_trakteer_caption">Dukungan dari Indonesia · QRIS, e-wallet, bank</string>
+    <string name="support_section_contribute">Kontribusi</string>
+    <string name="support_code">Kode sumber dan Pull Request</string>
+    <string name="support_code_caption">Perbaiki bug, tambah fitur, perbaiki terjemahan</string>
+    <string name="support_issue">Laporkan bug atau usulkan fitur</string>
+    <string name="support_issue_caption">Lampirkan Diagnostik › Salin agar lebih cepat diperbaiki</string>
+    <string name="support_guide">Cara berkontribusi</string>
+    <string name="support_guide_caption">Alur kerja, gaya kode, dan perjanjian kontributor</string>
+    <string name="support_community">Komunitas Logic Sekai</string>
+    <string name="support_share">Bagikan OmoAuto</string>
+    <string name="support_share_text">OmoAuto: Android Auto di layar OMOWAY. %1$s</string>
+    <string name="support_thanks">Terima kasih untuk setiap bintang, laporan bug, Pull Request, dan donasi. ❤️</string>
+</resources>

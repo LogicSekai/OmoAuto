@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title">Tentang</string>
+    <string name="about_version">Versi %1$s (%2$d) · %3$s</string>
+    <string name="about_tagline">Android Auto di layar OMOWAY kamu.</string>
+    <string name="about_community">Komunitas Logic Sekai</string>
+    <string name="about_source">Kode sumber</string>
+    <string name="about_support">Dukung OmoAuto</string>
+    <string name="about_update">Pembaruan aplikasi</string>
+    <string name="about_update_caption">Periksa versi terbaru</string>
+    <string name="about_support_caption">Donasi atau kontribusi: sekecil apa pun menjaga perbaikan dan fitur baru terus hadir</string>
+    <string name="about_disclaimer_title">Proyek independen</string>
+    <string name="about_disclaimer_body">Tidak berafiliasi, didukung, atau disponsori oleh OMOWAY maupun Google. OMOWAY, Android Auto, dan nama terkait adalah merek dagang pemiliknya masing-masing. Perangkat lunak eksperimental, disediakan apa adanya tanpa garansi.</string>
+    <string name="about_notices">Pemberitahuan open-source</string>
+    <string name="about_notices_intro">OmoAuto dibangun di atas proyek open-source berikut.</string>
+    <string name="about_license_title">Lisensi</string>
+    <string name="about_license_body">Hak cipta © 2026 Logic Sekai. OmoAuto adalah perangkat lunak bebas: boleh dibagikan dan dimodifikasi di bawah GNU Affero General Public License versi 3 atau lebih baru, dengan ketentuan atribusi tambahan di NOTICE. TANPA GARANSI APA PUN. Lisensi lengkap dan kode sumber: github.com/LogicSekai/OmoAuto. Lisensi komersial: jadi sponsor repo di GitHub Sponsors (github.com/sponsors/LogicSekai).</string>
+</resources>

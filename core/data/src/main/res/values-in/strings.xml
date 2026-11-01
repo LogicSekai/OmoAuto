@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="omo_update_channel">Pembaruan aplikasi</string>
+    <string name="omo_update_title">OmoAuto %1$s sudah tersedia</string>
+    <string name="omo_update_text">Ketuk untuk memperbarui ke versi terbaru.</string>
+</resources>

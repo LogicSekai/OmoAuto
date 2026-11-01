@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="omo_notification_channel">Koneksi motor</string>
+    <string name="omo_notification_stop">Hentikan</string>
+    <string name="omo_notification_streaming">Android Auto tampil di motor kamu</string>
+    <string name="omo_notification_aa_running">Android Auto berjalan</string>
+    <string name="omo_notification_connecting">Menghubungkan ke motor…</string>
+    <string name="omo_notification_linked">Motor terhubung</string>
+    <string name="omo_notification_tap_to_open">Ketuk untuk membuka OmoAuto</string>
+</resources>

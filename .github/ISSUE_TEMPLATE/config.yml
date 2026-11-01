@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Laporkan celah keamanan (privat)
+    url: https://github.com/LogicSekai/OmoAuto/security/advisories/new
+    about: Jangan laporkan celah keamanan lewat issue publik.
+  - name: Komunitas Logic Sekai
+    url: https://logicsekai.com
+    about: Tanya jawab dan diskusi seputar OmoAuto.
+  - name: Lisensi komersial (lewat sponsor)
+    url: https://github.com/sponsors/LogicSekai
+    about: Kode tertutup atau merek OmoAuto? Jadilah sponsor tier Komersial, lihat COMMERCIAL-LICENSE.md.

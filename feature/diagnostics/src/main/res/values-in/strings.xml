@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="diag_title">Diagnostik</string>
+    <string name="diag_excellent">Luar biasa!</string>
+    <string name="diag_good">Koneksi bagus</string>
+    <string name="diag_fair">Koneksi cukup</string>
+    <string name="diag_poor">Koneksi lemah</string>
+    <string name="diag_idle">Belum streaming</string>
+    <string name="diag_score">Skor</string>
+    <string name="diag_share">Bagikan</string>
+    <string name="diag_copy">Salin</string>
+    <string name="diag_meter_fps">Frame rate</string>
+    <string name="diag_meter_bitrate">Bitrate</string>
+    <string name="diag_meter_write">Waktu kirim per frame</string>
+    <string name="diag_meter_stability">Stabilitas</string>
+    <string name="diag_details">Detail koneksi</string>
+    <string name="diag_row_link">Motor</string>
+    <string name="diag_row_aa">Android Auto</string>
+    <string name="diag_row_display">Layar</string>
+    <string name="diag_row_encoder">Encoder</string>
+    <string name="diag_row_output">Gambar</string>
+    <string name="diag_row_frames">Kirim/gambar/decode</string>
+    <string name="diag_row_keyframes">Permintaan key frame</string>
+    <string name="diag_row_session">Sesi</string>
+    <string name="diag_events">Kejadian terbaru</string>
+    <string name="diag_no_events">Belum ada.</string>
+    <string name="diag_scope_note">Angka ini adalah yang dikirim HP, bukan yang tampil di layar motor. Bagikan diagnostik jika Android Auto tidak sampai ke motor kamu.</string>
+</resources>

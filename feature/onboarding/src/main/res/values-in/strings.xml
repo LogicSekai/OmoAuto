@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_title">Motor kamu.\nAndroid Auto.</string>
+    <string name="onboarding_subtitle">Peta dan musik di layar OMOWAY lewat Wi-Fi Direct. Tanpa kabel, tanpa perangkat tambahan.</string>
+    <string name="onboarding_badges">Tanpa iklan · Tanpa akun · Dibuat oleh rider</string>
+    <string name="onboarding_continue">Mulai</string>
+
+    <string name="disclaimer_title">Sebelum berkendara</string>
+    <string name="disclaimer_intro">OmoAuto adalah proyek komunitas yang independen. Mohon baca ini sebelum memakainya.</string>
+    <string name="disclaimer_independent_title">Proyek independen</string>
+    <string name="disclaimer_independent_body">Tidak berafiliasi, didukung, atau disponsori oleh OMOWAY maupun Google. OMOWAY, Android Auto, dan nama terkait adalah merek dagang pemiliknya masing-masing.</string>
+    <string name="disclaimer_warranty_title">Tanpa garansi</string>
+    <string name="disclaimer_warranty_body">Perangkat lunak eksperimental, disediakan apa adanya tanpa garansi. Risiko pemakaian ditanggung sendiri.</string>
+    <string name="disclaimer_safety_title">Berkendara dengan aman</string>
+    <string name="disclaimer_safety_body">Atur rute sebelum berangkat. Gunakan kontrol di HP hanya saat motor berhenti.</string>
+    <string name="disclaimer_responsibility_title">Tanggung jawab kamu</string>
+    <string name="disclaimer_responsibility_body">Kamu bertanggung jawab memakai OmoAuto sesuai hukum. Menampilkan navigasi atau konten lain di layar motor mungkin tidak diizinkan di semua tempat.</string>
+    <string name="disclaimer_privacy_title">Privasi</string>
+    <string name="disclaimer_privacy_body">Tanpa akun, tanpa iklan, tanpa analitik. OmoAuto hanya mengirim gambar Android Auto ke motor kamu lewat Wi-Fi-nya. Setup mengunduh kunci contoh publik dari GitHub hanya saat kamu mengetuk Ambil kunci.</string>
+    <string name="disclaimer_agree">Saya sudah membaca dan setuju</string>
+    <string name="disclaimer_accept">Lanjut</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="update_title">Pembaruan aplikasi</string>
+    <string name="update_installed">Versi terpasang</string>
+    <string name="update_checking">Memeriksa pembaruan…</string>
+    <string name="update_up_to_date">Kamu sudah memakai versi terbaru</string>
+    <string name="update_last_checked">Terakhir diperiksa %1$s</string>
+    <string name="update_check_again">Periksa lagi</string>
+    <string name="update_available">OmoAuto %1$s sudah tersedia</string>
+    <string name="update_size">Ukuran unduhan %1$s</string>
+    <string name="update_whats_new">Yang baru</string>
+    <string name="update_download">Unduh dan pasang</string>
+    <string name="update_open_page">Buka halaman rilis</string>
+    <string name="update_downloading">Mengunduh OmoAuto %1$s…</string>
+    <string name="update_cancel">Batal</string>
+    <string name="update_ready">OmoAuto %1$s siap dipasang</string>
+    <string name="update_ready_body">Android akan meminta konfirmasi. Pengaturan dan motor tersimpan tidak hilang.</string>
+    <string name="update_needs_permission">Izinkan \"Instal aplikasi tidak dikenal\" untuk OmoAuto, lalu kembali dan ketuk Pasang sekarang.</string>
+    <string name="update_install">Pasang sekarang</string>
+    <string name="update_failed_title">Pembaruan gagal</string>
+    <string name="update_failed_network">Tidak bisa terhubung ke GitHub. Periksa koneksi internet lalu coba lagi.</string>
+    <string name="update_failed_checksum">File unduhan rusak (checksum tidak cocok) dan sudah dihapus. Coba lagi.</string>
+    <string name="update_failed_invalid">File yang diunduh bukan rilis OmoAuto yang lebih baru, jadi tidak dipasang.</string>
+    <string name="update_failed_storage">Ruang penyimpanan tidak cukup untuk menyimpan pembaruan.</string>
+    <string name="update_retry">Coba lagi</string>
+    <string name="update_auto_title">Periksa otomatis</string>
+    <string name="update_auto_caption">Diperiksa sekitar dua kali sehari dan kamu diberi notifikasi saat ada versi baru.</string>
+    <string name="update_safety_note">Pembaruan hanya diambil dari rilis resmi di github.com/LogicSekai/OmoAuto dan diperiksa sebelum dipasang.</string>
+    <string name="update_disabled_title">Pembaruan dikelola toko aplikasi</string>
+    <string name="update_disabled_body">Salinan OmoAuto ini diperbarui lewat Google Play (atau tempat kamu memasangnya).</string>
+</resources>

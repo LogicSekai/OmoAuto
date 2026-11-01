@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title">About</string>
+    <string name="about_version">Version %1$s (%2$d) · %3$s</string>
+    <string name="about_tagline">Android Auto on your OMOWAY display.</string>
+    <string name="about_community">Logic Sekai community</string>
+    <string name="about_source">Source code</string>
+    <string name="about_support">Support OmoAuto</string>
+    <string name="about_update">App update</string>
+    <string name="about_update_caption">Check for the latest version</string>
+    <string name="about_support_caption">Donate or contribute: every bit keeps fixes and new features coming</string>
+    <string name="about_disclaimer_title">Independent project</string>
+    <string name="about_disclaimer_body">Not affiliated with, endorsed by, or supported by OMOWAY or Google. OMOWAY, Android Auto and related names are trademarks of their respective owners. Experimental software, provided as-is with no warranty.</string>
+    <string name="about_notices">Open-source notices</string>
+    <string name="about_notices_intro">OmoAuto is built on these open-source projects.</string>
+    <string name="about_license_title">License</string>
+    <string name="about_license_body">Copyright © 2026 Logic Sekai. OmoAuto is free software: you can redistribute and modify it under the GNU Affero General Public License, version 3 or later, with the additional attribution terms in NOTICE. It comes with ABSOLUTELY NO WARRANTY. Full license and source code: github.com/LogicSekai/OmoAuto. Commercial license: sponsor the repository on GitHub Sponsors (github.com/sponsors/LogicSekai).</string>
+</resources>

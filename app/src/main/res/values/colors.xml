@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="omo_orange">#FF7A4F</color>
+    <color name="omo_navy">#3C467D</color>
+    <color name="omo_background">#FFFFFF</color>
+    <color name="omo_background_night">#141832</color>
+</resources>

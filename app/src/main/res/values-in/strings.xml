@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">Beranda</string>
+    <string name="nav_setup">Setup</string>
+    <string name="nav_controls">Kontrol</string>
+    <string name="nav_diagnostics">Diagnostik</string>
+    <string name="nav_settings">Pengaturan</string>
+    <string name="nav_support">Dukung</string>
+    <string name="nav_about">Tentang</string>
+    <string name="nav_close">Tutup menu</string>
+    <string name="nav_stop_all">Hentikan semua</string>
+</resources>

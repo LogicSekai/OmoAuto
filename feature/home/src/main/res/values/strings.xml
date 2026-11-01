@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">OmoAuto</string>
+    <string name="home_menu">Open menu</string>
+    <string name="home_chip_live">Live on your bike</string>
+    <string name="home_chip_linked">Bike connected</string>
+    <string name="home_chip_offline">Not connected</string>
+
+    <string name="home_my_bikes">My bikes (%1$d)</string>
+    <string name="home_search_action">Search</string>
+    <string name="home_add_bike">Add a bike</string>
+    <string name="home_add_bike_caption">Turn the motorcycle on and search nearby</string>
+    <string name="home_bike_connected">Connected</string>
+    <string name="home_bike_tap_to_connect">Tap to connect</string>
+    <string name="home_bike_menu_text">Disconnect from this motorcycle, or forget it so it no longer appears here.</string>
+    <string name="home_disconnect">Disconnect</string>
+    <string name="home_forget">Forget</string>
+
+    <string name="home_start_aa">Start Android Auto</string>
+    <string name="home_stop_aa">Stop Android Auto</string>
+
+    <string name="home_status_on_bike">Showing on %1$s</string>
+    <string name="home_status_linked">%1$s is connected</string>
+    <string name="home_status_connecting">Connecting to %1$s…</string>
+    <string name="home_status_searching">Searching nearby displays…</string>
+    <string name="home_status_not_linked">No bike connected · preview on this phone</string>
+    <string name="home_status_display_waiting">Waiting for the display to accept…</string>
+    <string name="home_status_display_retrying">Reconnecting to the display…</string>
+    <string name="home_status_display_busy">The display is showing another app</string>
+
+    <string name="home_link_unavailable">Wi-Fi Direct is not available on this phone</string>
+    <string name="home_link_wifi_off">Turn on Wi-Fi to connect to your motorcycle</string>
+    <string name="home_link_permission">Allow Nearby Wi-Fi devices so OmoAuto can find your motorcycle</string>
+    <string name="home_link_failed">The connection could not start. Make sure the motorcycle is on, then try again.</string>
+    <string name="home_link_timeout">The motorcycle did not answer. Turn it on and try again.</string>
+    <string name="home_link_other_group">Another Wi-Fi Direct connection is active. Disconnect it in Wi-Fi settings, then try again.</string>
+    <string name="home_link_lost">Connection to the motorcycle was lost. Reconnecting…</string>
+    <string name="home_permission_denied">Nearby devices access is needed to find your motorcycle</string>
+
+    <string name="home_aa_off">Android Auto is off</string>
+    <string name="home_aa_starting">Starting</string>
+    <string name="home_aa_connecting">Connecting to Android Auto</string>
+    <string name="home_aa_waiting_video">Waiting for the picture</string>
+    <string name="home_aa_running">Running</string>
+    <string name="home_aa_recovering">Reconnecting</string>
+    <string name="home_aa_failed">Could not start</string>
+
+    <string name="home_fail_not_installed">Install Android Auto on this phone first.</string>
+    <string name="home_fail_no_keys">Head unit keys are missing. Finish Setup to continue.</string>
+    <string name="home_fail_keys_rejected">Android Auto rejected the head unit keys. Get the keys again in Setup.</string>
+    <string name="home_fail_server">Android Auto did not answer. Check that its head unit server is running (Setup shows how).</string>
+    <string name="home_fail_encoder">This phone could not start a video encoder.</string>
+    <string name="home_fail_phone_exit">Android Auto was closed on the phone.</string>
+    <string name="home_fail_protocol">Android Auto ended the session unexpectedly. Start it again.</string>
+    <string name="home_action_install">Install</string>
+    <string name="home_action_setup">Setup</string>
+    <string name="home_display_busy_help">Your motorcycle shows one phone app at a time. Close any other app that casts to it, then on the motorcycle close Navigation and open it again.</string>
+
+    <string name="home_setup_ready">Setup complete</string>
+    <string name="home_setup_needed">Finish Setup</string>
+    <string name="home_setup_caption">Keys and Android Auto checks</string>
+    <string name="home_preview_on_bike">Same picture as on your motorcycle · tap to control</string>
+    <string name="home_preview_phone_only">Preview on this phone · tap to control</string>
+    <string name="home_controls">Android Auto controls</string>
+    <string name="home_controls_caption">Move and select while parked</string>
+
+    <string name="home_widgets">Widgets</string>
+    <string name="home_details">Details</string>
+    <string name="home_widget_fps">Frame rate</string>
+    <string name="home_widget_fps_unit">frames per second</string>
+    <string name="home_widget_bitrate">Bitrate</string>
+    <string name="home_widget_now">now</string>
+    <string name="home_widget_target">Mbps · target %1$d</string>
+
+    <string name="home_search_title">Find your motorcycle</string>
+    <string name="home_search_running">Searching nearby displays…</string>
+    <string name="home_search_none">No display found. Make sure the motorcycle is turned on, then search again.</string>
+    <string name="home_search_pick">Tap your motorcycle to connect.</string>
+    <string name="home_search_again">Search again</string>
+    <string name="home_peer_available">Available</string>
+    <string name="home_peer_invited">Invited</string>
+    <string name="home_peer_connected">Connected</string>
+    <string name="home_peer_unavailable">Unavailable</string>
+
+    <string name="home_update_available">OmoAuto %1$s is available</string>
+    <string name="home_update_skip">Skip</string>
+    <string name="home_update_open">Update</string>
+    <string name="home_location_title">Turn on Location</string>
+    <string name="home_location_body">On Android 12 and older, your phone can only find the motorcycle while Location is on. OmoAuto does not read or store your location. Turn it on, then search again.</string>
+    <string name="home_location_open">Open settings</string>
+    <string name="home_location_later">Later</string>
+    <string name="home_fail_not_answering">Android Auto did not answer. Your phone probably paused it in the background. Tap Open Android Auto (this wakes it up), then ⋮ › Stop head unit server › Start head unit server. Check Setup › Keep Android Auto running, then start again.</string>
+    <string name="home_action_wake_aa">Open Android Auto</string>
+    <string name="home_display_taken_by">Your motorcycle display is still used by the %1$s app, and it shows one phone app at a time. Open its app info and tap Force stop, then close and reopen Navigation on the motorcycle. OmoAuto connects again by itself.</string>
+    <string name="home_display_taken">Your motorcycle display is used by another phone app. Close any app that casts to it, then close and reopen Navigation on the motorcycle. OmoAuto connects again by itself.</string>
+    <string name="home_action_app_info">Open %1$s app info</string>
+    <string name="home_status_display_taken">Display used by another app</string>
+</resources>

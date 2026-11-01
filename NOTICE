@@ -1,0 +1,71 @@
+OmoAuto
+Copyright (C) 2026 Logic Sekai <logicsekai@gmail.com>
+https://github.com/LogicSekai/OmoAuto
+https://logicsekai.com
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version, together with the Additional Terms below.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along
+with this program (file LICENSE). If not, see <https://www.gnu.org/licenses/>.
+
+A commercial license, for uses that do not comply with the AGPL, is granted to
+active sponsors of this repository at the Commercial tier on GitHub Sponsors
+(https://github.com/sponsors/LogicSekai). See COMMERCIAL-LICENSE.md.
+
+
+ADDITIONAL TERMS UNDER SECTION 7 OF THE GNU AGPL v3
+===================================================
+
+These terms are part of the license of every file in this repository that
+refers to this NOTICE file or carries an "SPDX-License-Identifier:
+AGPL-3.0-or-later" header written by Logic Sekai.
+
+1. Attribution (Section 7(b)).
+   Anyone who conveys this program, a modified version of it, or a work based
+   on it, in source or binary form, must:
+   a) keep this NOTICE file, the LICENSE file, and all copyright and license
+      notices in the source files; and
+   b) show the following attribution in a reasonably visible place: the
+      program's "About", "Credits" or "Licenses" screen for an app, or the
+      README / documentation for source releases:
+
+          Based on OmoAuto by Logic Sekai
+          https://github.com/LogicSekai/OmoAuto
+
+2. Marking modified versions (Section 7(c)).
+   A modified version must be clearly marked as changed and must not be
+   presented as the original OmoAuto or as a release made by Logic Sekai.
+   A modified version distributed to the public must use its own app name and
+   its own Android application ID (not "com.logicsekai.*").
+
+3. Names and trademarks (Section 7(e)).
+   This license grants no right to use the names "OmoAuto", "Logic Sekai",
+   or their logos and icons to name, endorse or promote a derived work,
+   except for the attribution required by term 1.
+
+
+4. No rights in third-party marks or products (Section 7(e) and 7(f)).
+   This license covers only the work of Logic Sekai and its contributors. It
+   grants no rights in the trademarks, logos, firmware, software or devices of
+   OMOWAY, Google (Android, Android Auto, Google Play) or any other third party.
+   Anyone who conveys this program or a work based on it must not present it
+   as official, endorsed or approved by OMOWAY, Google or Logic Sekai, and is
+   solely responsible for complying with those parties' terms and obtaining
+   any permission they require. Anyone who conveys this program with
+   contractual assumptions of liability to recipients must indemnify Logic
+   Sekai and its contributors for any liability those assumptions directly
+   impose on them (Section 7(f)).
+
+
+THIRD-PARTY COMPONENTS
+======================
+
+OmoAuto uses third-party software and assets under their own licenses.
+See THIRD-PARTY-NOTICES.md for the list, the credits and the license texts.

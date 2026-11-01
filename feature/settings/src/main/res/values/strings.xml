@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_title">Settings</string>
+    <string name="settings_apply_note">Stream and picture changes apply the next time Android Auto starts.</string>
+    <string name="settings_stream">Stream quality</string>
+    <string name="settings_bitrate">Bitrate</string>
+    <string name="settings_bitrate_caption">Megabits per second sent to your motorcycle. Higher is sharper but needs a strong Wi-Fi link.</string>
+    <string name="settings_output">Picture size</string>
+    <string name="settings_output_caption">Resolution sent to the display. 960×360 matches most OMOWAY screens.</string>
+    <string name="settings_source">Android Auto resolution</string>
+    <string name="settings_source_caption">What Android Auto renders before it is cropped and scaled.</string>
+    <string name="settings_low_latency">Low-latency mode</string>
+    <string name="settings_low_latency_caption">Drop late frames instead of queuing them. Keeps the map in step with the road.</string>
+    <string name="settings_fit">Fit on the display</string>
+    <string name="settings_right_margin">Right edge</string>
+    <string name="settings_right_margin_caption">Space kept free on the right of the display.</string>
+    <string name="settings_vertical_margin">Top and bottom</string>
+    <string name="settings_vertical_margin_caption">Space kept free above and below the picture.</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_display_night">Dark display theme</string>
+    <string name="settings_display_night_caption">Theme reported to the motorcycle display.</string>
+    <string name="settings_aa_night">Android Auto night mode</string>
+    <string name="settings_aa_night_caption">Ask Android Auto for its dark map colours.</string>
+    <string name="settings_app_theme">App theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_connection">Connection</string>
+    <string name="settings_auto_reconnect">Reconnect automatically</string>
+    <string name="settings_auto_reconnect_caption">Rejoin the motorcycle if the Wi-Fi Direct link drops.</string>
+    <string name="settings_no_bikes">No saved motorcycles yet.</string>
+    <string name="settings_rename">Rename</string>
+    <string name="settings_forget">Forget</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_cancel">Cancel</string>
+    <string name="settings_custom_fit">Custom edges</string>
+    <string name="settings_custom_fit_caption">Type the free space on each edge yourself instead of the presets.</string>
+    <string name="settings_custom_fit_units">In display units: the screen is 960 wide and 360 high. Left + right at most %1$d, top + bottom at most %2$d.</string>
+    <string name="settings_edge_left">Left</string>
+    <string name="settings_edge_right">Right</string>
+    <string name="settings_edge_top">Top</string>
+    <string name="settings_edge_bottom">Bottom</string>
+    <string name="settings_custom_fit_invalid">Too much space: left + right must be at most 480 and top + bottom at most 240.</string>
+    <string name="settings_custom_fit_result">Android Auto picture: %1$d × %2$d</string>
+    <string name="settings_custom_fit_reset">Reset</string>
+</resources>

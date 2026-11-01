@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_title">Your ride.\nAndroid Auto.</string>
+    <string name="onboarding_subtitle">Maps and music on your OMOWAY display, over Wi-Fi Direct. No cables, no extra hardware.</string>
+    <string name="onboarding_badges">No ads · No account · Built by riders</string>
+    <string name="onboarding_continue">Get started</string>
+
+    <string name="disclaimer_title">Before you ride</string>
+    <string name="disclaimer_intro">OmoAuto is an independent, community project. Please read this before using it.</string>
+    <string name="disclaimer_independent_title">Independent project</string>
+    <string name="disclaimer_independent_body">Not affiliated with, endorsed by, or supported by OMOWAY or Google. OMOWAY, Android Auto and related names are trademarks of their respective owners.</string>
+    <string name="disclaimer_warranty_title">No warranty</string>
+    <string name="disclaimer_warranty_body">Experimental software, provided as-is with no warranty. You use it at your own risk.</string>
+    <string name="disclaimer_safety_title">Ride safely</string>
+    <string name="disclaimer_safety_body">Set your route before you ride. Only use the phone controls while parked.</string>
+    <string name="disclaimer_responsibility_title">Your responsibility</string>
+    <string name="disclaimer_responsibility_body">You are responsible for using OmoAuto lawfully. Showing navigation or other content on your motorcycle\'s display may not be permitted everywhere.</string>
+    <string name="disclaimer_privacy_title">Privacy</string>
+    <string name="disclaimer_privacy_body">No account, no ads, no analytics. OmoAuto sends the Android Auto picture only to your motorcycle over its Wi-Fi. Setup downloads public sample keys from GitHub only when you tap Get keys.</string>
+    <string name="disclaimer_agree">I have read this and agree</string>
+    <string name="disclaimer_accept">Continue</string>
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_apply_note">Perubahan stream dan gambar berlaku saat Android Auto dimulai berikutnya.</string>
+    <string name="settings_stream">Kualitas stream</string>
+    <string name="settings_bitrate">Bitrate</string>
+    <string name="settings_bitrate_caption">Megabit per detik yang dikirim ke motor. Lebih tinggi lebih tajam, tapi butuh sinyal Wi-Fi kuat.</string>
+    <string name="settings_output">Ukuran gambar</string>
+    <string name="settings_output_caption">Resolusi yang dikirim ke layar. 960×360 cocok untuk kebanyakan layar OMOWAY.</string>
+    <string name="settings_source">Resolusi Android Auto</string>
+    <string name="settings_source_caption">Resolusi render Android Auto sebelum dipotong dan diskalakan.</string>
+    <string name="settings_low_latency">Mode latensi rendah</string>
+    <string name="settings_low_latency_caption">Buang frame yang terlambat alih-alih mengantre. Peta tetap sinkron dengan jalan.</string>
+    <string name="settings_fit">Penyesuaian di layar</string>
+    <string name="settings_right_margin">Tepi kanan</string>
+    <string name="settings_right_margin_caption">Ruang kosong di sisi kanan layar.</string>
+    <string name="settings_vertical_margin">Atas dan bawah</string>
+    <string name="settings_vertical_margin_caption">Ruang kosong di atas dan bawah gambar.</string>
+    <string name="settings_appearance">Tampilan</string>
+    <string name="settings_display_night">Tema gelap di layar motor</string>
+    <string name="settings_display_night_caption">Tema yang dilaporkan ke layar motor.</string>
+    <string name="settings_aa_night">Mode malam Android Auto</string>
+    <string name="settings_aa_night_caption">Minta Android Auto memakai warna peta gelap.</string>
+    <string name="settings_app_theme">Tema aplikasi</string>
+    <string name="settings_theme_system">Sistem</string>
+    <string name="settings_theme_light">Terang</string>
+    <string name="settings_theme_dark">Gelap</string>
+    <string name="settings_connection">Koneksi</string>
+    <string name="settings_auto_reconnect">Sambung ulang otomatis</string>
+    <string name="settings_auto_reconnect_caption">Hubungkan lagi ke motor jika Wi-Fi Direct terputus.</string>
+    <string name="settings_no_bikes">Belum ada motor tersimpan.</string>
+    <string name="settings_rename">Ubah nama</string>
+    <string name="settings_forget">Lupakan</string>
+    <string name="settings_save">Simpan</string>
+    <string name="settings_cancel">Batal</string>
+    <string name="settings_custom_fit">Tepi kustom</string>
+    <string name="settings_custom_fit_caption">Ketik sendiri ruang kosong di tiap tepi, bukan memakai pilihan bawaan.</string>
+    <string name="settings_custom_fit_units">Dalam satuan layar: lebar 960, tinggi 360. Kiri + kanan maksimal %1$d, atas + bawah maksimal %2$d.</string>
+    <string name="settings_edge_left">Kiri</string>
+    <string name="settings_edge_right">Kanan</string>
+    <string name="settings_edge_top">Atas</string>
+    <string name="settings_edge_bottom">Bawah</string>
+    <string name="settings_custom_fit_invalid">Terlalu besar: kiri + kanan maksimal 480 dan atas + bawah maksimal 240.</string>
+    <string name="settings_custom_fit_result">Gambar Android Auto: %1$d × %2$d</string>
+    <string name="settings_custom_fit_reset">Atur ulang</string>
+</resources>

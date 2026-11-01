@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setup_title">Setup</string>
+    <string name="setup_progress">%1$d of %2$d steps done</string>
+    <string name="setup_intro">OmoAuto shows Android Auto on your motorcycle\'s display. Finish these steps once.</string>
+    <string name="setup_footer">Developer mode stays on. After a phone restart, or a Force stop of Android Auto, the head unit server stops: only step 3 is needed again (⋮ › Start head unit server).</string>
+    <string name="setup_all_done">All set. This screen returns if a step stops passing.</string>
+    <string name="setup_ok">OK</string>
+    <string name="setup_done">Done</string>
+
+    <string name="setup_step_install">Install Android Auto</string>
+    <string name="setup_step_developer">Turn on developer mode</string>
+    <string name="setup_step_server">Start head unit server</string>
+    <string name="setup_step_keys">Head unit keys</string>
+    <string name="setup_step_background">Keep Android Auto running</string>
+
+    <string name="setup_install_body">Android Auto from Google Play is required. OmoAuto connects to it on this phone.</string>
+    <string name="setup_install_done">Installed · %1$s</string>
+    <string name="setup_install_button">Install from Google Play</string>
+
+    <string name="setup_dev_1">Tap Open Android Auto settings below.</string>
+    <string name="setup_dev_2">Scroll all the way down to Version (for example “Version 17.9…”) and tap it about 10 times in a row.</string>
+    <string name="setup_dev_3">When “Allow development settings?” appears, tap OK. Developer mode is now on. Come back here and tap Done.</string>
+    <string name="setup_open_aa_settings">Open Android Auto settings</string>
+
+    <string name="setup_server_1">Tap Open Android Auto settings below.</string>
+    <string name="setup_server_2">Tap ⋮ at the top right and choose Start head unit server.</string>
+    <string name="setup_server_3">The ⋮ menu has no Start head unit server? Developer mode is not on yet. Do step 2 first (tap Version about 10 times), then open ⋮ again.</string>
+    <string name="setup_server_running">Head unit server is running.</string>
+    <string name="setup_server_not_running">Head unit server isn\'t running.</string>
+    <string name="setup_server_unknown">Couldn\'t check the head unit server.</string>
+    <string name="setup_server_on">On</string>
+    <string name="setup_server_off">Off</string>
+
+    <string name="setup_keys_body">Android Auto only connects to a head unit that presents a certificate. Get keys downloads the free sample certificate and key from Open Headunit, an open-source head unit project on GitHub, checks their fingerprints and keeps them inside the app only.</string>
+    <string name="setup_keys_ready">Ready · %1$s · valid until %2$s</string>
+    <string name="setup_keys_ok">Ready</string>
+    <string name="setup_keys_get">Get keys</string>
+    <string name="setup_keys_import">Import files</string>
+    <string name="setup_keys_remove">Remove keys</string>
+    <string name="setup_keys_downloading">Downloading from GitHub…</string>
+    <string name="setup_keys_info_title">Where do these come from?</string>
+    <string name="setup_keys_info_body">They are published openly for testing, so everyone gets the same two files. They aren\'t secret, contain nothing about you, your phone or your motorcycle, and don\'t unlock anything. The certificate is labelled “Google-Android-Reference”, the name of that sample identity. OmoAuto downloads them from the exact version it was tested with.</string>
+    <string name="setup_keys_view_github">View on GitHub</string>
+    <string name="setup_open_app_info">Open Android Auto app info</string>
+
+    <string name="setup_msg_saved">Head unit keys are ready</string>
+    <string name="setup_msg_fingerprint">GitHub sent different files than OmoAuto expects, so they weren\'t used. Try again later, or import files.</string>
+    <string name="setup_msg_network">Download failed (%1$s). Check your internet connection.</string>
+
+    <string name="setup_problem_missing">That file has no certificate or private key.</string>
+    <string name="setup_problem_cert_unreadable">The certificate couldn\'t be read.</string>
+    <string name="setup_problem_cert_expired">The certificate has expired.</string>
+    <string name="setup_problem_cert_not_yet">The certificate isn\'t valid yet. Check the phone\'s date.</string>
+    <string name="setup_problem_key_password">The private key is password-protected. Export it without a password.</string>
+    <string name="setup_problem_key_unsupported">Unsupported key type. Use an RSA or EC key in PKCS#8 format.</string>
+    <string name="setup_problem_key_unreadable">The private key couldn\'t be read.</string>
+    <string name="setup_problem_key_mismatch">The private key doesn\'t belong to this certificate.</string>
+    <string name="setup_step_location">Turn on Location</string>
+    <string name="setup_location_on">On</string>
+    <string name="setup_location_off">Off</string>
+    <string name="setup_location_body">On Android 12 and older, phones only find Wi-Fi Direct devices such as your motorcycle while Location is on. OmoAuto does not read or store your location.</string>
+    <string name="setup_location_status_on">Location is on.</string>
+    <string name="setup_location_status_off">Location is off, so your motorcycle cannot be found.</string>
+    <string name="setup_location_button">Open Location settings</string>
+    <string name="setup_bg_body">%1$s phones can stop Android Auto in the background, so it cannot answer OmoAuto. Let it keep running:</string>
+    <string name="setup_bg_done_line">Come back here and tap Done.</string>
+    <string name="setup_open_autostart">Open Autostart settings</string>
+    <string name="setup_open_battery_list">Open battery optimisation list</string>
+    <string name="setup_bg_brand_xiaomi">Xiaomi, Redmi and POCO</string>
+    <string name="setup_bg_brand_samsung">Samsung</string>
+    <string name="setup_bg_brand_oppo">OPPO, realme and OnePlus</string>
+    <string name="setup_bg_brand_vivo">vivo and iQOO</string>
+    <string name="setup_bg_brand_huawei">Huawei and Honor</string>
+    <string name="setup_bg_brand_transsion">Infinix, Tecno and itel</string>
+    <string name="setup_bg_brand_other">Some</string>
+    <string name="setup_bg_xiaomi_1">Tap Open Autostart settings and turn on Android Auto.</string>
+    <string name="setup_bg_xiaomi_2">Tap Open Android Auto app info, then Battery saver, and choose No restrictions.</string>
+    <string name="setup_bg_samsung_1">Tap Open Android Auto app info, then Battery, and choose Unrestricted.</string>
+    <string name="setup_bg_samsung_2">In Settings, Battery, Background usage limits, make sure Android Auto is not in Sleeping apps or Deep sleeping apps.</string>
+    <string name="setup_bg_oppo_1">Tap Open Autostart settings and allow Android Auto to auto-launch.</string>
+    <string name="setup_bg_oppo_2">Tap Open Android Auto app info, then Battery usage, and turn on Allow background activity.</string>
+    <string name="setup_bg_vivo_1">Tap Open Autostart settings and allow Android Auto to start in the background.</string>
+    <string name="setup_bg_vivo_2">Tap Open Android Auto app info, then Battery, and allow high background power usage.</string>
+    <string name="setup_bg_huawei_1">Tap Open Autostart settings, find Android Auto, turn off Manage automatically, and turn on Auto-launch, Secondary launch and Run in background.</string>
+    <string name="setup_bg_huawei_2">Tap Open Android Auto app info, then Battery, and allow it to run in the background.</string>
+    <string name="setup_bg_transsion_1">Tap Open Autostart settings (Phone Master) and allow Android Auto.</string>
+    <string name="setup_bg_transsion_2">Tap Open Android Auto app info, then Battery, and choose No restrictions.</string>
+    <string name="setup_bg_other_1">Tap Open Android Auto app info.</string>
+    <string name="setup_bg_other_2">Open Battery and choose Unrestricted.</string>
+    <string name="setup_server_4">Come back to OmoAuto. This step turns green by itself.</string>
+</resources>

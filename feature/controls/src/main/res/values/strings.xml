@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="controls_title">Controls</string>
+    <string name="controls_back">Back</string>
+    <string name="controls_ready">Android Auto is listening</string>
+    <string name="controls_not_ready">Start Android Auto first</string>
+    <string name="controls_left">Move left</string>
+    <string name="controls_right">Move right</string>
+    <string name="controls_back_key">Back</string>
+    <string name="controls_home_key">Home</string>
+    <string name="controls_parked">Use these only while parked.</string>
+    <string name="controls_mode_media">Media</string>
+    <string name="controls_mode_remote">Remote</string>
+    <string name="controls_up">Move up</string>
+    <string name="controls_down">Move down</string>
+    <string name="controls_ok" translatable="false">OK</string>
+    <string name="controls_hint_media">Media buttons for the app that is playing. To move around Android Auto, use Remote or Trackpad, or tap the picture above.</string>
+    <string name="controls_hint_remote">Like a TV remote: arrows move the focus, OK selects. Hold an arrow to repeat. Tap the picture above to touch Android Auto directly.</string>
+    <string name="controls_preview_on_bike">Same as on the motorcycle · tap to control</string>
+    <string name="controls_preview_phone">Preview on this phone · tap to control</string>
+    <string name="controls_target_web">Controlling OmoWeb on the car screen</string>
+    <string name="controls_player_title">Media player</string>
+    <string name="controls_player_caption">For the app that is playing: Spotify, YouTube Music, OmoWeb and others.</string>
+    <string name="controls_player_previous">Previous</string>
+    <string name="controls_player_rewind">Rewind</string>
+    <string name="controls_player_play_pause">Play / pause</string>
+    <string name="controls_player_forward">Fast forward</string>
+    <string name="controls_player_next">Next</string>
+    <string name="controls_web_title" translatable="false">OmoWeb</string>
+    <string name="controls_web_inactive">Open OmoWeb on the motorcycle screen to use these buttons.</string>
+    <string name="controls_web_fullscreen">Full screen</string>
+    <string name="controls_web_ultrawide" translatable="false">Ultrawide</string>
+    <string name="controls_mode_touch">Touch</string>
+    <string name="controls_touch_close">Close touch mode</string>
+</resources>

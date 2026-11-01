@@ -1,0 +1,28 @@
+name: Usulan fitur / Feature request
+description: Usulkan fitur atau peningkatan untuk OmoAuto
+title: "[Fitur] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Masalah apa yang ingin diselesaikan?
+      description: Ceritakan situasinya, mis. "Saat berkendara saya ingin ..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solusi yang diusulkan
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatif yang sudah dicoba
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Kontribusi
+      options:
+        - label: Saya bersedia membantu mengerjakan fitur ini lewat Pull Request

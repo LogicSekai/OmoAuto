@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="support_title">Support OmoAuto</string>
+    <string name="support_hero_title">Free and open source</string>
+    <string name="support_hero_body">OmoAuto is built by the Logic Sekai community. Your support pays for development, testing on more phones and new features.</string>
+    <string name="support_section_donate">Donate</string>
+    <string name="support_sponsor">GitHub Sponsors</string>
+    <string name="support_sponsor_caption">Sponsor the repository · also the commercial license</string>
+    <string name="support_kofi">Ko-fi</string>
+    <string name="support_kofi_caption">Buy us a coffee · PayPal or card</string>
+    <string name="support_trakteer">Trakteer</string>
+    <string name="support_trakteer_caption">Support from Indonesia · QRIS, e-wallet, bank</string>
+    <string name="support_section_contribute">Contribute</string>
+    <string name="support_code">Source code and pull requests</string>
+    <string name="support_code_caption">Fix bugs, add features, improve translations</string>
+    <string name="support_issue">Report a bug or suggest a feature</string>
+    <string name="support_issue_caption">Attach Diagnostics › Copy to help us fix it faster</string>
+    <string name="support_guide">How to contribute</string>
+    <string name="support_guide_caption">Workflow, code style and the contributor agreement</string>
+    <string name="support_community">Logic Sekai community</string>
+    <string name="support_share">Share OmoAuto</string>
+    <string name="support_share_text">OmoAuto: Android Auto on your OMOWAY display. %1$s</string>
+    <string name="support_thanks">Thank you for every star, bug report, pull request and donation. ❤️</string>
+</resources>

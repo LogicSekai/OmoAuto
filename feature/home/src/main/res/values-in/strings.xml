@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">OmoAuto</string>
+    <string name="home_menu">Buka menu</string>
+    <string name="home_chip_live">Tampil di motor</string>
+    <string name="home_chip_linked">Motor terhubung</string>
+    <string name="home_chip_offline">Belum terhubung</string>
+
+    <string name="home_my_bikes">Motor saya (%1$d)</string>
+    <string name="home_search_action">Cari</string>
+    <string name="home_add_bike">Tambah motor</string>
+    <string name="home_add_bike_caption">Nyalakan motor lalu cari di sekitar</string>
+    <string name="home_bike_connected">Terhubung</string>
+    <string name="home_bike_tap_to_connect">Ketuk untuk menghubungkan</string>
+    <string name="home_bike_menu_text">Putuskan koneksi dari motor ini, atau lupakan agar tidak muncul lagi di sini.</string>
+    <string name="home_disconnect">Putuskan</string>
+    <string name="home_forget">Lupakan</string>
+
+    <string name="home_start_aa">Mulai Android Auto</string>
+    <string name="home_stop_aa">Hentikan Android Auto</string>
+
+    <string name="home_status_on_bike">Tampil di %1$s</string>
+    <string name="home_status_linked">%1$s terhubung</string>
+    <string name="home_status_connecting">Menghubungkan ke %1$s…</string>
+    <string name="home_status_searching">Mencari layar di sekitar…</string>
+    <string name="home_status_not_linked">Belum ada motor · pratinjau di HP ini</string>
+    <string name="home_status_display_waiting">Menunggu layar menerima…</string>
+    <string name="home_status_display_retrying">Menyambung ulang ke layar…</string>
+    <string name="home_status_display_busy">Layar sedang menampilkan aplikasi lain</string>
+
+    <string name="home_link_unavailable">Wi-Fi Direct tidak tersedia di HP ini</string>
+    <string name="home_link_wifi_off">Nyalakan Wi-Fi untuk terhubung ke motor</string>
+    <string name="home_link_permission">Izinkan Perangkat Wi-Fi sekitar agar OmoAuto bisa menemukan motor kamu</string>
+    <string name="home_link_failed">Koneksi gagal dimulai. Pastikan motor menyala, lalu coba lagi.</string>
+    <string name="home_link_timeout">Motor tidak merespons. Nyalakan motor lalu coba lagi.</string>
+    <string name="home_link_other_group">Ada koneksi Wi-Fi Direct lain yang aktif. Putuskan di pengaturan Wi-Fi, lalu coba lagi.</string>
+    <string name="home_link_lost">Koneksi ke motor terputus. Menyambung ulang…</string>
+    <string name="home_permission_denied">Akses perangkat sekitar dibutuhkan untuk menemukan motor</string>
+
+    <string name="home_aa_off">Android Auto mati</string>
+    <string name="home_aa_starting">Memulai</string>
+    <string name="home_aa_connecting">Menghubungkan ke Android Auto</string>
+    <string name="home_aa_waiting_video">Menunggu gambar</string>
+    <string name="home_aa_running">Berjalan</string>
+    <string name="home_aa_recovering">Menyambung ulang</string>
+    <string name="home_aa_failed">Gagal dimulai</string>
+
+    <string name="home_fail_not_installed">Pasang Android Auto di HP ini dulu.</string>
+    <string name="home_fail_no_keys">Kunci head unit belum ada. Selesaikan Setup untuk lanjut.</string>
+    <string name="home_fail_keys_rejected">Android Auto menolak kunci head unit. Ambil ulang kunci di Setup.</string>
+    <string name="home_fail_server">Android Auto tidak menjawab. Pastikan head unit server-nya berjalan (lihat Setup).</string>
+    <string name="home_fail_encoder">HP ini tidak bisa menjalankan encoder video.</string>
+    <string name="home_fail_phone_exit">Android Auto ditutup di HP.</string>
+    <string name="home_fail_protocol">Android Auto mengakhiri sesi secara tiba-tiba. Mulai lagi.</string>
+    <string name="home_action_install">Pasang</string>
+    <string name="home_action_setup">Setup</string>
+    <string name="home_display_busy_help">Motor hanya menampilkan satu aplikasi HP dalam satu waktu. Tutup aplikasi lain yang terhubung ke layar, lalu di motor tutup Navigasi dan buka lagi.</string>
+
+    <string name="home_setup_ready">Setup selesai</string>
+    <string name="home_setup_needed">Selesaikan Setup</string>
+    <string name="home_setup_caption">Kunci dan pemeriksaan Android Auto</string>
+    <string name="home_preview_on_bike">Sama dengan di motor · ketuk untuk mengontrol</string>
+    <string name="home_preview_phone_only">Pratinjau di HP ini · ketuk untuk mengontrol</string>
+    <string name="home_controls">Kontrol Android Auto</string>
+    <string name="home_controls_caption">Geser dan pilih saat motor berhenti</string>
+
+    <string name="home_widgets">Widget</string>
+    <string name="home_details">Detail</string>
+    <string name="home_widget_fps">Frame rate</string>
+    <string name="home_widget_fps_unit">frame per detik</string>
+    <string name="home_widget_bitrate">Bitrate</string>
+    <string name="home_widget_now">kini</string>
+    <string name="home_widget_target">Mbps · target %1$d</string>
+
+    <string name="home_search_title">Cari motor kamu</string>
+    <string name="home_search_running">Mencari layar di sekitar…</string>
+    <string name="home_search_none">Layar tidak ditemukan. Pastikan motor menyala, lalu cari lagi.</string>
+    <string name="home_search_pick">Ketuk motor kamu untuk menghubungkan.</string>
+    <string name="home_search_again">Cari lagi</string>
+    <string name="home_peer_available">Tersedia</string>
+    <string name="home_peer_invited">Diundang</string>
+    <string name="home_peer_connected">Terhubung</string>
+    <string name="home_peer_unavailable">Tidak tersedia</string>
+
+    <string name="home_update_available">OmoAuto %1$s sudah tersedia</string>
+    <string name="home_update_skip">Lewati</string>
+    <string name="home_update_open">Perbarui</string>
+    <string name="home_location_title">Nyalakan Lokasi</string>
+    <string name="home_location_body">Di Android 12 ke bawah, HP hanya bisa menemukan motor saat Lokasi menyala. OmoAuto tidak membaca atau menyimpan lokasi kamu. Nyalakan, lalu cari lagi.</string>
+    <string name="home_location_open">Buka pengaturan</string>
+    <string name="home_location_later">Nanti</string>
+    <string name="home_fail_not_answering">Android Auto tidak menjawab. HP kemungkinan menjedanya di latar belakang. Ketuk Buka Android Auto (untuk membangunkannya), lalu ⋮ › Stop head unit server › Start head unit server. Periksa Setup › Biarkan Android Auto berjalan, lalu mulai lagi.</string>
+    <string name="home_action_wake_aa">Buka Android Auto</string>
+    <string name="home_display_taken_by">Layar motor masih dipakai aplikasi %1$s, dan hanya bisa menampilkan satu aplikasi HP dalam satu waktu. Buka info aplikasinya dan ketuk Paksa berhenti, lalu tutup dan buka lagi Navigasi di motor. OmoAuto akan tersambung sendiri.</string>
+    <string name="home_display_taken">Layar motor sedang dipakai aplikasi HP lain. Tutup aplikasi yang terhubung ke motor, lalu tutup dan buka lagi Navigasi di motor. OmoAuto akan tersambung sendiri.</string>
+    <string name="home_action_app_info">Buka info %1$s</string>
+    <string name="home_status_display_taken">Layar dipakai aplikasi lain</string>
+</resources>

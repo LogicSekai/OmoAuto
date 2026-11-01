@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="omo_notification_channel">Motorcycle connection</string>
+    <string name="omo_notification_stop">Stop</string>
+    <string name="omo_notification_streaming">Android Auto is on your motorcycle</string>
+    <string name="omo_notification_aa_running">Android Auto is running</string>
+    <string name="omo_notification_connecting">Connecting to your motorcycle…</string>
+    <string name="omo_notification_linked">Motorcycle connected</string>
+    <string name="omo_notification_tap_to_open">Tap to open OmoAuto</string>
+</resources>

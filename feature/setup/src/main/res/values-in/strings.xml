@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setup_title">Setup</string>
+    <string name="setup_progress">%1$d dari %2$d langkah selesai</string>
+    <string name="setup_intro">OmoAuto menampilkan Android Auto di layar motor kamu. Selesaikan langkah ini sekali saja.</string>
+    <string name="setup_footer">Mode developer tetap aktif. Setelah HP restart, atau Android Auto dihentikan paksa, head unit server ikut mati: cukup ulangi langkah 3 (⋮ › Start head unit server).</string>
+    <string name="setup_all_done">Semua siap. Layar ini muncul lagi jika ada langkah yang tidak lolos.</string>
+    <string name="setup_ok">OK</string>
+    <string name="setup_done">Selesai</string>
+
+    <string name="setup_step_install">Pasang Android Auto</string>
+    <string name="setup_step_developer">Aktifkan mode developer</string>
+    <string name="setup_step_server">Jalankan head unit server</string>
+    <string name="setup_step_keys">Kunci head unit</string>
+    <string name="setup_step_background">Biarkan Android Auto berjalan</string>
+
+    <string name="setup_install_body">Android Auto dari Google Play wajib ada. OmoAuto terhubung ke Android Auto di HP ini.</string>
+    <string name="setup_install_done">Terpasang · %1$s</string>
+    <string name="setup_install_button">Pasang dari Google Play</string>
+
+    <string name="setup_dev_1">Ketuk Buka pengaturan Android Auto di bawah.</string>
+    <string name="setup_dev_2">Gulir ke paling bawah sampai Versi (misalnya “Versi 17.9…”), lalu ketuk sekitar 10 kali berturut-turut.</string>
+    <string name="setup_dev_3">Saat muncul “Izinkan setelan pengembangan?” (Allow development settings?), ketuk OK. Mode developer sekarang aktif. Kembali ke sini dan ketuk Selesai.</string>
+    <string name="setup_open_aa_settings">Buka pengaturan Android Auto</string>
+
+    <string name="setup_server_1">Ketuk Buka pengaturan Android Auto di bawah.</string>
+    <string name="setup_server_2">Ketuk ⋮ di kanan atas, lalu pilih Start head unit server.</string>
+    <string name="setup_server_3">Di menu ⋮ tidak ada Start head unit server? Berarti mode developer belum aktif. Kerjakan langkah 2 dulu (ketuk Versi sekitar 10 kali), lalu buka ⋮ lagi.</string>
+    <string name="setup_server_running">Head unit server berjalan.</string>
+    <string name="setup_server_not_running">Head unit server belum berjalan.</string>
+    <string name="setup_server_unknown">Tidak bisa memeriksa head unit server.</string>
+    <string name="setup_server_on">Aktif</string>
+    <string name="setup_server_off">Mati</string>
+
+    <string name="setup_keys_body">Android Auto hanya mau terhubung ke head unit yang punya sertifikat. Ambil kunci akan mengunduh sertifikat dan kunci contoh gratis dari Open Headunit (proyek head unit open-source di GitHub), memeriksa sidik jarinya, dan menyimpannya hanya di dalam aplikasi.</string>
+    <string name="setup_keys_ready">Siap · %1$s · berlaku sampai %2$s</string>
+    <string name="setup_keys_ok">Siap</string>
+    <string name="setup_keys_get">Ambil kunci</string>
+    <string name="setup_keys_import">Impor file</string>
+    <string name="setup_keys_remove">Hapus kunci</string>
+    <string name="setup_keys_downloading">Mengunduh dari GitHub…</string>
+    <string name="setup_keys_info_title">Dari mana kunci ini?</string>
+    <string name="setup_keys_info_body">Kunci ini dipublikasikan terbuka untuk pengujian, jadi semua orang mendapat dua file yang sama. Kunci ini tidak rahasia, tidak berisi data tentang kamu, HP, atau motor kamu, dan tidak membuka apa pun. Sertifikatnya berlabel “Google-Android-Reference”, nama identitas contoh tersebut. OmoAuto mengunduhnya dari versi persis yang sudah diuji.</string>
+    <string name="setup_keys_view_github">Lihat di GitHub</string>
+    <string name="setup_open_app_info">Buka info aplikasi Android Auto</string>
+
+    <string name="setup_msg_saved">Kunci head unit siap</string>
+    <string name="setup_msg_fingerprint">GitHub mengirim file yang berbeda dari yang diharapkan, jadi tidak dipakai. Coba lagi nanti, atau impor file.</string>
+    <string name="setup_msg_network">Unduhan gagal (%1$s). Periksa koneksi internet.</string>
+
+    <string name="setup_problem_missing">File itu tidak berisi sertifikat atau kunci privat.</string>
+    <string name="setup_problem_cert_unreadable">Sertifikat tidak bisa dibaca.</string>
+    <string name="setup_problem_cert_expired">Sertifikat sudah kedaluwarsa.</string>
+    <string name="setup_problem_cert_not_yet">Sertifikat belum berlaku. Periksa tanggal di HP.</string>
+    <string name="setup_problem_key_password">Kunci privat dilindungi kata sandi. Ekspor ulang tanpa kata sandi.</string>
+    <string name="setup_problem_key_unsupported">Jenis kunci tidak didukung. Gunakan kunci RSA atau EC format PKCS#8.</string>
+    <string name="setup_problem_key_unreadable">Kunci privat tidak bisa dibaca.</string>
+    <string name="setup_problem_key_mismatch">Kunci privat tidak cocok dengan sertifikat ini.</string>
+    <string name="setup_step_location">Nyalakan Lokasi</string>
+    <string name="setup_location_on">Aktif</string>
+    <string name="setup_location_off">Mati</string>
+    <string name="setup_location_body">Di Android 12 ke bawah, HP hanya bisa menemukan perangkat Wi-Fi Direct seperti motor kamu saat Lokasi menyala. OmoAuto tidak membaca atau menyimpan lokasi kamu.</string>
+    <string name="setup_location_status_on">Lokasi aktif.</string>
+    <string name="setup_location_status_off">Lokasi mati, jadi motor tidak bisa ditemukan.</string>
+    <string name="setup_location_button">Buka pengaturan Lokasi</string>
+    <string name="setup_bg_body">HP %1$s bisa menghentikan Android Auto di latar belakang sehingga tidak bisa menjawab OmoAuto. Biarkan tetap berjalan:</string>
+    <string name="setup_bg_done_line">Kembali ke sini dan ketuk Selesai.</string>
+    <string name="setup_open_autostart">Buka pengaturan Mulai otomatis</string>
+    <string name="setup_open_battery_list">Buka daftar optimasi baterai</string>
+    <string name="setup_bg_brand_xiaomi">Xiaomi, Redmi, dan POCO</string>
+    <string name="setup_bg_brand_samsung">Samsung</string>
+    <string name="setup_bg_brand_oppo">OPPO, realme, dan OnePlus</string>
+    <string name="setup_bg_brand_vivo">vivo dan iQOO</string>
+    <string name="setup_bg_brand_huawei">Huawei dan Honor</string>
+    <string name="setup_bg_brand_transsion">Infinix, Tecno, dan itel</string>
+    <string name="setup_bg_brand_other">tertentu</string>
+    <string name="setup_bg_xiaomi_1">Ketuk Buka pengaturan Mulai otomatis dan aktifkan Android Auto.</string>
+    <string name="setup_bg_xiaomi_2">Ketuk Buka info aplikasi Android Auto, lalu Penghemat baterai, dan pilih Tanpa batasan.</string>
+    <string name="setup_bg_samsung_1">Ketuk Buka info aplikasi Android Auto, lalu Baterai, dan pilih Tidak dibatasi.</string>
+    <string name="setup_bg_samsung_2">Di Pengaturan, Baterai, Batas penggunaan latar belakang, pastikan Android Auto tidak ada di Aplikasi tidur atau Aplikasi tidur nyenyak.</string>
+    <string name="setup_bg_oppo_1">Ketuk Buka pengaturan Mulai otomatis dan izinkan Android Auto diluncurkan otomatis.</string>
+    <string name="setup_bg_oppo_2">Ketuk Buka info aplikasi Android Auto, lalu Penggunaan baterai, dan aktifkan Izinkan aktivitas latar belakang.</string>
+    <string name="setup_bg_vivo_1">Ketuk Buka pengaturan Mulai otomatis dan izinkan Android Auto berjalan di latar belakang.</string>
+    <string name="setup_bg_vivo_2">Ketuk Buka info aplikasi Android Auto, lalu Baterai, dan izinkan penggunaan daya tinggi di latar belakang.</string>
+    <string name="setup_bg_huawei_1">Ketuk Buka pengaturan Mulai otomatis, cari Android Auto, matikan Kelola otomatis, lalu aktifkan Luncurkan otomatis, Peluncuran sekunder, dan Jalankan di latar belakang.</string>
+    <string name="setup_bg_huawei_2">Ketuk Buka info aplikasi Android Auto, lalu Baterai, dan izinkan berjalan di latar belakang.</string>
+    <string name="setup_bg_transsion_1">Ketuk Buka pengaturan Mulai otomatis (Phone Master) dan izinkan Android Auto.</string>
+    <string name="setup_bg_transsion_2">Ketuk Buka info aplikasi Android Auto, lalu Baterai, dan pilih Tanpa batasan.</string>
+    <string name="setup_bg_other_1">Ketuk Buka info aplikasi Android Auto.</string>
+    <string name="setup_bg_other_2">Buka Baterai dan pilih Tidak dibatasi.</string>
+    <string name="setup_server_4">Kembali ke OmoAuto. Langkah ini otomatis berubah hijau.</string>
+</resources>

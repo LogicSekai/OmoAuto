@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="omo_update_channel">App updates</string>
+    <string name="omo_update_title">OmoAuto %1$s is available</string>
+    <string name="omo_update_text">Tap to update to the latest version.</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.OmoAuto" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/omo_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.OmoAuto.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/omo_orange</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.OmoAuto</item>
+    </style>
+</resources>
