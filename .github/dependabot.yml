@@ -15,6 +15,15 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "org.jetbrains.kotlin*"
         update-types: ["version-update:semver-major"]
+      # These versions need AGP 9.1 and compileSdk 37: wait for the AGP 9 migration.
+      - dependency-name: "androidx.core:*"
+        versions: [">=1.19.0"]
+      - dependency-name: "androidx.compose:compose-bom"
+        versions: [">=2026.09.00"]
+      - dependency-name: "androidx.navigation:*"
+        versions: [">=2.10.0"]
+      - dependency-name: "androidx.lifecycle:*"
+        versions: [">=2.11.0"]
     groups:
       androidx:
         patterns: ["androidx.*", "org.jetbrains.kotlinx*"]
