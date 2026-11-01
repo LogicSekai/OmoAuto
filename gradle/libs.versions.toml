@@ -1,7 +1,7 @@
 [versions]
 # Toolchain
 agp = "8.7.3"
-kotlin = "2.1.0"
+kotlin = "2.4.21"
 jvmTarget = "17"
 
 # Android SDK levels
@@ -10,17 +10,17 @@ targetSdk = "35"
 minSdk = "26"
 
 # AndroidX
-androidxCore = "1.15.0"
+androidxCore = "1.19.1"
 androidxActivity = "1.9.3"
 androidxLifecycle = "2.8.7"
-androidxNavigation = "2.8.5"
-androidxDatastore = "1.1.1"
-androidxSplash = "1.0.1"
-androidxWork = "2.10.0"
-composeBom = "2024.12.01"
+androidxNavigation = "2.10.2"
+androidxDatastore = "1.3.0"
+androidxSplash = "1.2.0"
+androidxWork = "2.12.0"
+composeBom = "2026.09.00"
 
 # Kotlin libs
-coroutines = "1.9.0"
+coroutines = "1.11.0"
 
 # Testing
 junit4 = "4.13.2"
