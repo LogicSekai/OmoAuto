@@ -5,9 +5,19 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # Major AGP / Gradle / Kotlin need a manual migration (build-logic), not a bot bump.
+      - dependency-name: "com.android.tools.build:gradle"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "com.android.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "gradle-wrapper"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "org.jetbrains.kotlin*"
+        update-types: ["version-update:semver-major"]
     groups:
-      androidx-compose:
-        patterns: ["androidx.*", "org.jetbrains.kotlin*", "com.android.tools.build*"]
+      androidx:
+        patterns: ["androidx.*", "org.jetbrains.kotlinx*"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

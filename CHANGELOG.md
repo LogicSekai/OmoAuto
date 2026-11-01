@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.1 (belum dirilis)
+## 0.3.1 — 2026-11-01
 
 - **Pembaruan dalam aplikasi:** OmoAuto memeriksa GitHub Releases (otomatis sekitar dua kali sehari,
   bisa dimatikan), memberi notifikasi saat ada versi baru, lalu mengunduh dan memasang APK langsung
