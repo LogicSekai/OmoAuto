@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -58,7 +57,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.logicsekai.omoauto.data.phone.AndroidAutoHelper
 import com.logicsekai.omoauto.data.phone.CastingApps
 import com.logicsekai.omoauto.data.phone.PhoneSettings
-import com.logicsekai.omoauto.data.settings.SavedBike
 import com.logicsekai.omoauto.designsystem.component.LivePreview
 import com.logicsekai.omoauto.designsystem.component.AccentRow
 import com.logicsekai.omoauto.designsystem.component.ActionPill
@@ -95,7 +93,7 @@ fun HomeRoute(
     val snackbar = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     var showSearch by remember { mutableStateOf(false) }
-    var bikeMenu by remember { mutableStateOf<SavedBike?>(null) }
+    var bikeMenu by remember { mutableStateOf<WifiDirectLink.Peer?>(null) }
     var askLocation by remember { mutableStateOf(false) }
     val permissionDenied = stringResource(R.string.home_permission_denied)
     val encoderFailed = stringResource(R.string.home_fail_encoder)
@@ -105,7 +103,6 @@ fun HomeRoute(
     )
 
     val state = ui.projection
-    val connectedAddress = state.linkedPeer?.address
 
     fun startAa() {
         when (viewModel.startAndroidAuto()) {
@@ -138,33 +135,37 @@ fun HomeRoute(
                 }
             }
 
+            // No saved motorcycles: every ride starts with a search (see WifiDirectLink.connect).
             item { Column {
                 SectionHeader(
-                    title = stringResource(R.string.home_my_bikes, ui.settings.savedBikes.size),
+                    title = stringResource(R.string.home_bike_title),
                     actionLabel = stringResource(R.string.home_search_action),
                     onAction = { withPermissions { viewModel.startSearch(); showSearch = true } },
                     modifier = Modifier.padding(horizontal = 24.dp),
                 )
                 Spacer(Modifier.height(4.dp))
-                val colors = listOf(OmoThemeExtras.colors.cardPink, OmoThemeExtras.colors.cardSky, OmoThemeExtras.colors.cardLilac)
+                val link = state.link
+                val current = when (link) {
+                    is WifiDirectLink.State.Connected -> link.peer
+                    is WifiDirectLink.State.Connecting -> link.peer
+                    else -> null
+                }
                 LazyRow(contentPadding = PaddingValues(horizontal = 24.dp), horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                    items(ui.settings.savedBikes, key = { it.address }) { bike ->
-                        val index = ui.settings.savedBikes.indexOf(bike)
-                        val connected = bike.address.equals(connectedAddress, ignoreCase = true)
-                        BikeCard(
-                            name = bike.name,
-                            caption = if (connected) stringResource(R.string.home_bike_connected) else stringResource(R.string.home_bike_tap_to_connect),
-                            color = colors[index % colors.size],
-                            connected = connected,
-                            onClick = {
-                                if (connected) bikeMenu = bike
-                                else withPermissions { viewModel.connect(bike.address, bike.name) }
-                            },
-                        )
+                    if (current != null) {
+                        item(key = current.address) {
+                            val connected = link is WifiDirectLink.State.Connected
+                            BikeCard(
+                                name = current.displayName,
+                                caption = stringResource(if (connected) R.string.home_bike_connected else R.string.home_bike_connecting),
+                                color = OmoThemeExtras.colors.cardSky,
+                                connected = connected,
+                                onClick = { bikeMenu = current },
+                            )
+                        }
                     }
                     item {
                         AddTileCard(
-                            title = stringResource(R.string.home_add_bike),
+                            title = stringResource(R.string.home_find_bike),
                             caption = stringResource(R.string.home_add_bike_caption),
                             onClick = { withPermissions { viewModel.startSearch(); showSearch = true } },
                         )
@@ -308,16 +309,12 @@ fun HomeRoute(
     bikeMenu?.let { bike ->
         AlertDialog(
             onDismissRequest = { bikeMenu = null },
-            title = { Text(bike.name) },
+            title = { Text(bike.displayName) },
             text = { Text(stringResource(R.string.home_bike_menu_text)) },
             confirmButton = {
                 TextButton(onClick = { viewModel.disconnect(); bikeMenu = null }) { Text(stringResource(R.string.home_disconnect)) }
             },
-            dismissButton = {
-                TextButton(onClick = { viewModel.disconnect(); viewModel.forgetBike(bike.address); bikeMenu = null }) {
-                    Text(stringResource(R.string.home_forget))
-                }
-            },
+            dismissButton = { TextButton(onClick = { bikeMenu = null }) { Text(stringResource(R.string.home_cancel)) } },
         )
     }
 }

@@ -67,6 +67,9 @@ class VideoPipeline(
 
     fun setPreviewSurface(surface: Surface?, width: Int, height: Int) = compositor.setPreviewSurface(surface, width, height)
 
+    /** Light (true) or black (false) free edges on the display; applies immediately. */
+    fun setMarginLight(light: Boolean) = compositor.setMarginLight(light)
+
     fun stats(): Stats {
         val d = decoder
         return Stats(

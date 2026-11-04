@@ -65,8 +65,4 @@ class HomeViewModel(
     fun skipUpdate(version: String) {
         viewModelScope.launch { settings.setSkippedVersion(version) }
     }
-
-    fun forgetBike(address: String) {
-        viewModelScope.launch { settings.forgetBike(address) }
-    }
 }

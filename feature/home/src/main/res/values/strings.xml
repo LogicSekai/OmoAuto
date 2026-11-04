@@ -5,16 +5,11 @@
     <string name="home_chip_live">Live on your bike</string>
     <string name="home_chip_linked">Bike connected</string>
     <string name="home_chip_offline">Not connected</string>
-
-    <string name="home_my_bikes">My bikes (%1$d)</string>
     <string name="home_search_action">Search</string>
-    <string name="home_add_bike">Add a bike</string>
     <string name="home_add_bike_caption">Turn the motorcycle on and search nearby</string>
     <string name="home_bike_connected">Connected</string>
-    <string name="home_bike_tap_to_connect">Tap to connect</string>
-    <string name="home_bike_menu_text">Disconnect from this motorcycle, or forget it so it no longer appears here.</string>
+    <string name="home_bike_menu_text">Disconnect from this motorcycle? Nothing is saved: next time, search again and tap it.</string>
     <string name="home_disconnect">Disconnect</string>
-    <string name="home_forget">Forget</string>
 
     <string name="home_start_aa">Start Android Auto</string>
     <string name="home_stop_aa">Stop Android Auto</string>
@@ -95,4 +90,8 @@
     <string name="home_display_taken">Your motorcycle display is used by another phone app. Close any app that casts to it, then close and reopen Navigation on the motorcycle. OmoAuto connects again by itself.</string>
     <string name="home_action_app_info">Open %1$s app info</string>
     <string name="home_status_display_taken">Display used by another app</string>
+    <string name="home_bike_title">Motorcycle</string>
+    <string name="home_bike_connecting">Connecting…</string>
+    <string name="home_find_bike">Find motorcycle</string>
+    <string name="home_cancel">Cancel</string>
 </resources>

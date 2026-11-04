@@ -33,6 +33,11 @@ import kotlinx.coroutines.flow.asStateFlow
  * persistently) had been used. A temporary group left over from earlier is therefore removed and
  * joined again persistently.
  *
+ * Nothing is remembered between rides: [connect] always looks the display up first (a fresh
+ * Wi-Fi Direct search) and joins only once Android has found it. Joining an address Android has
+ * not seen recently fails or times out, which is why a saved motorcycle used to need "forget and
+ * add again".
+ *
  * All calls must happen on the main thread. Callers check runtime permissions first
  * (NEARBY_WIFI_DEVICES on Android 13+, ACCESS_FINE_LOCATION before).
  */
@@ -67,6 +72,8 @@ class WifiDirectLink(context: Context) {
     private var p2pEnabled = true
     private var target: Peer? = null
     private var generation = 0
+    /** Address [connect] is waiting to see in a search result before joining. */
+    private var awaitingPeer: String? = null
 
     private val _state = MutableStateFlow<State>(State.Idle)
     val state: StateFlow<State> = _state.asStateFlow()
@@ -99,6 +106,7 @@ class WifiDirectLink(context: Context) {
         if (current is State.Connecting) {
             OmoLog.w(TAG, "Wi-Fi Direct connect timed out")
             cancelConnectQuietly()
+            awaitingPeer = null
             _state.value = State.Failed(Reason.TIMEOUT, current.peer)
         }
     }
@@ -163,6 +171,7 @@ class WifiDirectLink(context: Context) {
         val peer = _peers.value.firstOrNull { it.address.equals(address, ignoreCase = true) }
             ?: Peer(address, name, WifiP2pDevice.AVAILABLE)
         target = peer
+        awaitingPeer = null
         generation++
         val gen = generation
         handler.removeCallbacks(searchTimeout)
@@ -175,7 +184,7 @@ class WifiDirectLink(context: Context) {
                 val ownerIsDisplay = group?.owner?.deviceAddress?.equals(address, ignoreCase = true) == true
                 val temporary = Build.VERSION.SDK_INT >= 30 && group != null && group.networkId == TEMPORARY_NETWORK_ID
                 when {
-                    group == null -> joinGroup(ch, peer, gen)
+                    group == null -> findThenJoin(ch, peer, gen)
                     ownerIsDisplay && !temporary -> {
                         OmoLog.i(TAG, "Already in ${peer.displayName}'s group")
                         requestConnectionInfo()
@@ -183,11 +192,44 @@ class WifiDirectLink(context: Context) {
                     else -> {
                         OmoLog.i(TAG, if (ownerIsDisplay) "Leaving the temporary group to join persistently" else "Leaving another Wi-Fi Direct group")
                         manager?.removeGroup(ch, object : WifiP2pManager.ActionListener {
-                            override fun onSuccess() { handler.postDelayed({ if (gen == generation) joinGroup(ch, peer, gen) }, 800) }
-                            override fun onFailure(reason: Int) { if (gen == generation) joinGroup(ch, peer, gen) }
+                            override fun onSuccess() { handler.postDelayed({ if (gen == generation) findThenJoin(ch, peer, gen) }, 800) }
+                            override fun onFailure(reason: Int) { if (gen == generation) findThenJoin(ch, peer, gen) }
                         })
                     }
                 }
+            }
+        } catch (e: SecurityException) {
+            _state.value = State.Failed(Reason.PERMISSION, peer)
+        }
+    }
+
+    /**
+     * Joins [peer] once Android currently sees it. Asks Android for its peer list first; when the
+     * display is not in it (not searched for recently), searches and joins as soon as the display
+     * shows up. The connect timeout covers a display that is off or out of range.
+     */
+    @SuppressLint("MissingPermission")
+    private fun findThenJoin(ch: WifiP2pManager.Channel, peer: Peer, gen: Int) {
+        try {
+            manager?.requestPeers(ch) { list ->
+                if (gen != generation) return@requestPeers
+                val seen = list.deviceList.firstOrNull { it.deviceAddress.equals(peer.address, ignoreCase = true) }
+                if (seen != null) {
+                    joinGroup(ch, peer.copy(name = seen.deviceName.orEmpty().ifBlank { peer.name }, status = seen.status), gen)
+                    return@requestPeers
+                }
+                OmoLog.i(TAG, "Searching for ${peer.displayName} before connecting…")
+                awaitingPeer = peer.address
+                manager?.discoverPeers(ch, object : WifiP2pManager.ActionListener {
+                    override fun onSuccess() = requestPeers()
+                    override fun onFailure(reason: Int) {
+                        if (gen != generation) return
+                        OmoLog.w(TAG, "discoverPeers before connect failed ($reason)")
+                        awaitingPeer = null
+                        handler.removeCallbacks(connectTimeout)
+                        _state.value = State.Failed(Reason.CONNECT_FAILED, peer)
+                    }
+                })
             }
         } catch (e: SecurityException) {
             _state.value = State.Failed(Reason.PERMISSION, peer)
@@ -232,6 +274,7 @@ class WifiDirectLink(context: Context) {
     /** Leaves the group (if any) and forgets the target. */
     fun disconnect() {
         target = null
+        awaitingPeer = null
         generation++
         handler.removeCallbacks(connectTimeout)
         val ch = channel
@@ -263,6 +306,15 @@ class WifiDirectLink(context: Context) {
                 _peers.value = list.deviceList
                     .map { Peer(it.deviceAddress, it.deviceName.orEmpty(), it.status) }
                     .sortedBy { it.displayName.lowercase() }
+                // connect() is waiting for this display to show up: join it now.
+                val waiting = awaitingPeer ?: return@requestPeers
+                val found = _peers.value.firstOrNull { it.address.equals(waiting, ignoreCase = true) } ?: return@requestPeers
+                val wanted = target
+                if (_state.value is State.Connecting && wanted != null && wanted.address.equals(waiting, ignoreCase = true)) {
+                    awaitingPeer = null
+                    OmoLog.i(TAG, "Found ${found.displayName}, joining")
+                    joinGroup(ch, found, generation)
+                }
             }
         } catch (e: SecurityException) {
             OmoLog.w(TAG, "requestPeers denied", e)

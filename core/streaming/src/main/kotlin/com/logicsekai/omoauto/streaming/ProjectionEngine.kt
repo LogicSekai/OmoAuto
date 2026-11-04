@@ -6,6 +6,8 @@ package com.logicsekai.omoauto.streaming
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.PowerManager
@@ -15,6 +17,8 @@ import com.logicsekai.omoauto.common.OmoLog
 import com.logicsekai.omoauto.data.keys.HeadUnitKeyRepository
 import com.logicsekai.omoauto.data.phone.AndroidAutoHelper
 import com.logicsekai.omoauto.data.phone.CastingApps
+import com.logicsekai.omoauto.data.settings.MarginColor
+import com.logicsekai.omoauto.data.settings.OmoSettings
 import com.logicsekai.omoauto.data.settings.SettingsRepository
 import com.logicsekai.omoauto.protocol.aa.AaHeadUnitSession
 import com.logicsekai.omoauto.protocol.aa.AaTouchAction
@@ -33,10 +37,12 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlin.math.abs
 
 /**
  * Orchestrates one ride: Wi-Fi Direct link ⟷ display session ⟷ video pipeline ⟷ Android Auto.
@@ -109,6 +115,28 @@ class ProjectionEngine(
         scope.launch {
             needsForeground.collect { active -> if (active) startForegroundService() }
         }
+        // Android Auto day/night follows the setting, the phone's dark theme or the clock;
+        // re-checked every 20 s and sent to a running session at once.
+        scope.launch {
+            combine(settings.settings, flow { while (true) { emit(Unit); delay(20_000) } }) { s, _ -> isNight(s) }
+                .distinctUntilChanged()
+                .collect { night -> aaSession?.setNightMode(night) }
+        }
+        // Edge colour applies to a running stream at once.
+        scope.launch {
+            settings.settings.map { it.marginColor }.distinctUntilChanged().collect { color ->
+                pipeline?.setMarginLight(color == MarginColor.LIGHT)
+            }
+        }
+    }
+
+    /** Night mode for Android Auto right now (see [com.logicsekai.omoauto.data.settings.AaTheme]). */
+    private fun isNight(s: OmoSettings): Boolean {
+        // System resources: the phone's own theme, not this app's in-app theme override.
+        val phoneDark = (Resources.getSystem().configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+            Configuration.UI_MODE_NIGHT_YES
+        val hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
+        return s.aaTheme.isNight(phoneDark, hour, s.nightStartHour, s.nightEndHour)
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -134,7 +162,6 @@ class ProjectionEngine(
         when (state) {
             is WifiDirectLink.State.Connected -> {
                 reconnectAttempts = 0
-                scope.launch { settings.rememberBike(state.peer.address, state.peer.displayName) }
                 maybeStartDisplaySession()
             }
             is WifiDirectLink.State.Failed -> {
@@ -184,12 +211,13 @@ class ProjectionEngine(
             return StartResult.ENCODER_UNAVAILABLE
         }
         previewSurface?.let { pipe.setPreviewSurface(it, previewWidth, previewHeight) }
+        pipe.setMarginLight(s.marginColor == MarginColor.LIGHT)
         geometry = geo
         pipeline = pipe
 
         val session = AaHeadUnitSession(
             identityProvider = { keys.identity() },
-            config = HeadUnitConfig(video = geo.aa, nightMode = s.androidAutoNightMode),
+            config = HeadUnitConfig(video = geo.aa, nightMode = isNight(s)),
             listener = AaListener(),
         )
         aaSession = session
@@ -224,29 +252,92 @@ class ProjectionEngine(
 
     /** True while a touch that started inside Android Auto's UI area is in progress. */
     private var touchActive = false
+    private var lastTouchX = -1
+    private var lastTouchY = -1
+    /** Touch that went down in an edge zone and is not sent yet (see [EdgeSwipeGuard]). */
+    private var pendingDown: Pair<Int, Int>? = null
+    private var pendingDownJob: Job? = null
+    /** Shift applied to a drag that started in an edge zone. */
+    private var dragDx = 0
+    private var dragDy = 0
 
     /**
      * Forwards a touch on the phone preview ([viewWidth] x [viewHeight] px) to Android Auto, so
      * apps that need tapping (e.g. a web browser) can be used while parked. [action] is an
-     * AaTouchAction value. Touches that start in the margins are ignored.
+     * AaTouchAction value. Touches that start in the margins are ignored. Coordinates are pixels
+     * of Android Auto's UI area ([VideoGeometry.previewToTouch]).
+     *
+     * A touch that goes down near an edge waits until it is clearly a tap, a long press or a drag;
+     * a drag is then started just outside the edge zones so Android Auto's edge-swipe detector
+     * does not pop up its Back / Exit toolbar over phone apps ([EdgeSwipeGuard]).
+     * Moves that do not change the touch point are not sent (they only flood the input channel
+     * and delay the next tap).
      */
     fun touchPreview(action: Int, x: Float, y: Float, viewWidth: Int, viewHeight: Int) {
         val session = aaSession ?: return
         val geo = geometry ?: return
         when (action) {
             AaTouchAction.DOWN -> {
-                val point = geo.previewToSource(x, y, viewWidth, viewHeight) ?: return
+                val point = geo.previewToTouch(x, y, viewWidth, viewHeight) ?: return
                 touchActive = true
-                session.sendTouch(AaTouchAction.DOWN, point.first, point.second)
+                dragDx = 0
+                dragDy = 0
+                pendingDownJob?.cancel()
+                if (edgeGuard(geo).inEdgeZone(point.first, point.second)) {
+                    pendingDown = point
+                    pendingDownJob = scope.launch {
+                        delay(EdgeSwipeGuard.HOLD_MS)
+                        val held = pendingDown ?: return@launch
+                        pendingDown = null
+                        sendTouchPoint(session, AaTouchAction.DOWN, held.first, held.second)
+                    }
+                } else {
+                    pendingDown = null
+                    sendTouchPoint(session, AaTouchAction.DOWN, point.first, point.second)
+                }
             }
             else -> {
                 if (!touchActive) return
-                val point = geo.previewToSource(x, y, viewWidth, viewHeight, clamp = true) ?: return
-                session.sendTouch(action, point.first, point.second)
-                if (action == AaTouchAction.UP) touchActive = false
+                val point = geo.previewToTouch(x, y, viewWidth, viewHeight, clamp = true) ?: return
+                val start = pendingDown
+                if (start != null) {
+                    if (action == AaTouchAction.MOVE &&
+                        abs(point.first - start.first) < EdgeSwipeGuard.SLOP &&
+                        abs(point.second - start.second) < EdgeSwipeGuard.SLOP
+                    ) return
+                    pendingDown = null
+                    pendingDownJob?.cancel()
+                    if (action == AaTouchAction.MOVE) {
+                        // A drag from an edge zone: start it outside the zones, keep the motion.
+                        val safe = edgeGuard(geo).safeStart(start.first, start.second)
+                        dragDx = safe.first - start.first
+                        dragDy = safe.second - start.second
+                        sendTouchPoint(session, AaTouchAction.DOWN, safe.first, safe.second)
+                    } else {
+                        // A tap: real position.
+                        sendTouchPoint(session, AaTouchAction.DOWN, start.first, start.second)
+                    }
+                }
+                val tx = (point.first + dragDx).coerceIn(0, geo.cropWidth - 1)
+                val ty = (point.second + dragDy).coerceIn(0, geo.cropHeight - 1)
+                if (action == AaTouchAction.MOVE && tx == lastTouchX && ty == lastTouchY) return
+                sendTouchPoint(session, action, tx, ty)
+                if (action == AaTouchAction.UP) {
+                    touchActive = false
+                    dragDx = 0
+                    dragDy = 0
+                }
             }
         }
     }
+
+    private fun sendTouchPoint(session: AaHeadUnitSession, action: Int, x: Int, y: Int) {
+        lastTouchX = x
+        lastTouchY = y
+        session.sendTouch(action, x, y)
+    }
+
+    private fun edgeGuard(geo: VideoGeometry) = EdgeSwipeGuard(geo.cropWidth, geo.cropHeight, geo.aa.density)
 
     /**
      * Shows the composed picture on the phone (a TextureView on Home or Controls). The newest

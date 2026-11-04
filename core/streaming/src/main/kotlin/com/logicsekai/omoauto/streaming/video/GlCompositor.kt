@@ -141,6 +141,15 @@ class GlCompositor(private val geometry: VideoGeometry, private val fps: Int = 6
         if (surface == null) done.await(500, TimeUnit.MILLISECONDS)
     }
 
+    /** Grey level of the free edges: 0 = black (default), [LIGHT_LEVEL] = light. Applies at once. */
+    @Volatile var marginLevel = 0f
+        private set
+
+    fun setMarginLight(light: Boolean) {
+        marginLevel = if (light) LIGHT_LEVEL else 0f
+        previewDirty = true
+    }
+
     fun release() {
         running = false
         val done = CountDownLatch(1)
@@ -227,9 +236,10 @@ class GlCompositor(private val geometry: VideoGeometry, private val fps: Int = 6
     private fun draw(x: Int, y: Int, width: Int, height: Int) {
         val sx = width / geometry.outputWidth.toFloat()
         val sy = height / geometry.outputHeight.toFloat()
-        // Black background (margins)
+        // Background = the free edges around Android Auto's picture (black, or light if chosen)
         GLES20.glViewport(x, y, width, height)
-        GLES20.glClearColor(0f, 0f, 0f, 1f)
+        val edge = marginLevel
+        GLES20.glClearColor(edge, edge, edge, 1f)
         GLES20.glEnable(GLES20.GL_SCISSOR_TEST)
         GLES20.glScissor(x, y, width, height)
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
@@ -358,6 +368,8 @@ class GlCompositor(private val geometry: VideoGeometry, private val fps: Int = 6
 
     private companion object {
         const val TAG = "OmoGl"
+        /** Light edges: a soft white (#F2F2F2) instead of pure white, easier on the eyes at night. */
+        const val LIGHT_LEVEL = 0.949f
         /** The phone preview is a reference picture; 30 fps looks smooth and halves its cost. */
         const val PREVIEW_FPS = 30
         const val EGL_RECORDABLE_ANDROID = 0x3142

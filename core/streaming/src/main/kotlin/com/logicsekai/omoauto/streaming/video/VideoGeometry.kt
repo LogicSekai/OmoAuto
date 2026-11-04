@@ -51,6 +51,41 @@ data class VideoGeometry(
         return sx.toInt() to sy.toInt()
     }
 
+    /**
+     * Maps a point on the phone preview to Android Auto touch coordinates: **pixels of Android
+     * Auto's UI area** (the video frame without the margins), with (0, 0) at the UI area's
+     * top-left corner and no scaling to the announced touch-screen size.
+     *
+     * Measured on a real phone (Android Auto 17.9, margins on): video-frame coordinates (margin
+     * offset added) landed one rail icon too low, and stretching the UI area over the announced
+     * 1280 x 720 overshot further (Spotify opened Phone, Maps opened Spotify). Plain UI-area pixels
+     * are what Android Auto expects.
+     *
+     * The touch screen is announced with exactly the UI-area size ([VideoConfig.contentWidth] x
+     * [VideoConfig.contentHeight]), so these pixels are also full touch-screen coordinates: the
+     * mapping stays exact with any custom margins, whether Android Auto takes touch points as UI
+     * pixels or scales the touch screen onto its UI area.
+     *
+     * Points outside the UI area return null, or are clamped to its edge when [clamp] is true.
+     */
+    fun previewToTouch(x: Float, y: Float, viewWidth: Int, viewHeight: Int, clamp: Boolean = false): Pair<Int, Int>? {
+        if (viewWidth <= 0 || viewHeight <= 0) return null
+        val scale = minOf(viewWidth / outputWidth.toFloat(), viewHeight / outputHeight.toFloat())
+        val offsetX = (viewWidth - outputWidth * scale) / 2f
+        val offsetY = (viewHeight - outputHeight * scale) / 2f
+        var ox = (x - offsetX) / scale - destLeft
+        var oy = (y - offsetY) / scale - destTop
+        val inside = ox >= 0 && oy >= 0 && ox < destWidth && oy < destHeight
+        if (!inside) {
+            if (!clamp) return null
+            ox = ox.coerceIn(0f, destWidth - 1f)
+            oy = oy.coerceIn(0f, destHeight - 1f)
+        }
+        val tx = (ox * cropWidth / destWidth).toInt().coerceIn(0, cropWidth - 1)
+        val ty = (oy * cropHeight / destHeight).toInt().coerceIn(0, cropHeight - 1)
+        return tx to ty
+    }
+
     companion object {
         /** Preset layout: nothing on the left, [rightMargin] on the right, [verticalMargin] above and below. */
         fun compute(outputWidth: Int, sourceWidth: Int, rightMargin: Int, verticalMargin: Int): VideoGeometry =

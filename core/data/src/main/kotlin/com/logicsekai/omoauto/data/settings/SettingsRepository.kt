@@ -17,8 +17,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import org.json.JSONArray
-import org.json.JSONObject
 
 private val Context.omoSettingsStore: DataStore<Preferences> by preferencesDataStore(name = "omo_settings")
 
@@ -41,6 +39,7 @@ class SettingsRepository(context: Context, scope: CoroutineScope) {
     suspend fun setRightMargin(px: Int) = store.edit { it[Keys.RIGHT_MARGIN] = px }
     suspend fun setVerticalMargin(px: Int) = store.edit { it[Keys.VERTICAL_MARGIN] = px }
     suspend fun setCustomFit(enabled: Boolean) = store.edit { it[Keys.CUSTOM_FIT] = enabled }
+    suspend fun setMarginColor(color: MarginColor) = store.edit { it[Keys.MARGIN_COLOR] = color.name }
     suspend fun setCustomMargins(margins: FitMargins) = store.edit {
         val m = margins.clamped()
         it[Keys.FIT_LEFT] = m.left
@@ -50,31 +49,17 @@ class SettingsRepository(context: Context, scope: CoroutineScope) {
     }
     suspend fun setBoundedLiveQueue(enabled: Boolean) = store.edit { it[Keys.BOUNDED_QUEUE] = enabled }
     suspend fun setDisplayNightTheme(night: Boolean) = store.edit { it[Keys.DISPLAY_NIGHT] = night }
-    suspend fun setAndroidAutoNightMode(night: Boolean) = store.edit { it[Keys.AA_NIGHT] = night }
+    suspend fun setAaTheme(theme: AaTheme) = store.edit { it[Keys.AA_THEME] = theme.name }
+    suspend fun setNightHours(start: Int, end: Int) = store.edit {
+        it[Keys.NIGHT_START] = start.mod(24)
+        it[Keys.NIGHT_END] = end.mod(24)
+    }
     suspend fun setAppTheme(theme: AppTheme) = store.edit { it[Keys.APP_THEME] = theme.name }
     suspend fun setAutoReconnect(enabled: Boolean) = store.edit { it[Keys.AUTO_RECONNECT] = enabled }
     suspend fun setBackgroundConfirmed(confirmed: Boolean) = store.edit { it[Keys.BACKGROUND_CONFIRMED] = confirmed }
     suspend fun setDeveloperModeConfirmed(confirmed: Boolean) = store.edit { it[Keys.DEV_MODE_CONFIRMED] = confirmed }
     suspend fun setSkippedVersion(version: String?) = store.edit {
         if (version == null) it.remove(Keys.SKIPPED_VERSION) else it[Keys.SKIPPED_VERSION] = version
-    }
-
-    /** Adds or renames a motorcycle and marks it as the last used one. */
-    suspend fun rememberBike(address: String, name: String) = store.edit { prefs ->
-        val bikes = decodeBikes(prefs[Keys.SAVED_BIKES]).filterNot { it.address.equals(address, ignoreCase = true) }
-        prefs[Keys.SAVED_BIKES] = encodeBikes(listOf(SavedBike(address, name)) + bikes)
-        prefs[Keys.LAST_BIKE] = address
-    }
-
-    suspend fun forgetBike(address: String) = store.edit { prefs ->
-        prefs[Keys.SAVED_BIKES] = encodeBikes(decodeBikes(prefs[Keys.SAVED_BIKES]).filterNot { it.address.equals(address, true) })
-        if (prefs[Keys.LAST_BIKE].equals(address, ignoreCase = true)) prefs.remove(Keys.LAST_BIKE)
-    }
-
-    suspend fun renameBike(address: String, name: String) = store.edit { prefs ->
-        prefs[Keys.SAVED_BIKES] = encodeBikes(
-            decodeBikes(prefs[Keys.SAVED_BIKES]).map { if (it.address.equals(address, true)) it.copy(name = name) else it },
-        )
     }
 
     private fun fromPreferences(p: Preferences) = OmoSettings(
@@ -95,30 +80,19 @@ class SettingsRepository(context: Context, scope: CoroutineScope) {
         ).clamped(),
         boundedLiveQueue = p[Keys.BOUNDED_QUEUE] ?: true,
         displayNightTheme = p[Keys.DISPLAY_NIGHT] ?: true,
-        androidAutoNightMode = p[Keys.AA_NIGHT] ?: false,
+        marginColor = p[Keys.MARGIN_COLOR]?.let { runCatching { MarginColor.valueOf(it) }.getOrNull() } ?: MarginColor.DARK,
+        // Older versions only had an on/off night switch: "on" carries over as DARK.
+        aaTheme = p[Keys.AA_THEME]?.let { runCatching { AaTheme.valueOf(it) }.getOrNull() }
+            ?: if (p[Keys.AA_NIGHT] == true) AaTheme.DARK else AaTheme.AUTO,
+        nightStartHour = p[Keys.NIGHT_START] ?: 18,
+        nightEndHour = p[Keys.NIGHT_END] ?: 6,
         appTheme = runCatching { AppTheme.valueOf(p[Keys.APP_THEME] ?: "SYSTEM") }.getOrDefault(AppTheme.SYSTEM),
-        savedBikes = decodeBikes(p[Keys.SAVED_BIKES]),
-        lastBikeAddress = p[Keys.LAST_BIKE],
         autoReconnect = p[Keys.AUTO_RECONNECT] ?: true,
         backgroundConfirmed = p[Keys.BACKGROUND_CONFIRMED] ?: false,
         developerModeConfirmed = p[Keys.DEV_MODE_CONFIRMED] ?: false,
         skippedVersion = p[Keys.SKIPPED_VERSION],
     )
 
-    private fun encodeBikes(bikes: List<SavedBike>): String = JSONArray().apply {
-        bikes.forEach { put(JSONObject().put("address", it.address).put("name", it.name)) }
-    }.toString()
-
-    private fun decodeBikes(raw: String?): List<SavedBike> {
-        if (raw.isNullOrBlank()) return emptyList()
-        return runCatching {
-            val array = JSONArray(raw)
-            (0 until array.length()).map {
-                val o = array.getJSONObject(it)
-                SavedBike(o.getString("address"), o.optString("name", o.getString("address")))
-            }
-        }.getOrDefault(emptyList())
-    }
 
     private object Keys {
         val ONBOARDING_DONE = booleanPreferencesKey("onboarding_done")
@@ -129,16 +103,19 @@ class SettingsRepository(context: Context, scope: CoroutineScope) {
         val RIGHT_MARGIN = intPreferencesKey("right_margin_px")
         val VERTICAL_MARGIN = intPreferencesKey("vertical_margin_px")
         val CUSTOM_FIT = booleanPreferencesKey("custom_fit")
+        val MARGIN_COLOR = stringPreferencesKey("margin_color")
         val FIT_LEFT = intPreferencesKey("fit_left")
         val FIT_TOP = intPreferencesKey("fit_top")
         val FIT_RIGHT = intPreferencesKey("fit_right")
         val FIT_BOTTOM = intPreferencesKey("fit_bottom")
         val BOUNDED_QUEUE = booleanPreferencesKey("bounded_live_queue")
         val DISPLAY_NIGHT = booleanPreferencesKey("display_night_theme")
+        /** Legacy on/off switch, read once for migration to [AA_THEME]. */
         val AA_NIGHT = booleanPreferencesKey("aa_night_mode")
+        val AA_THEME = stringPreferencesKey("aa_theme")
+        val NIGHT_START = intPreferencesKey("night_start_hour")
+        val NIGHT_END = intPreferencesKey("night_end_hour")
         val APP_THEME = stringPreferencesKey("app_theme")
-        val SAVED_BIKES = stringPreferencesKey("saved_bikes")
-        val LAST_BIKE = stringPreferencesKey("last_bike_address")
         val AUTO_RECONNECT = booleanPreferencesKey("auto_reconnect")
         // Key name kept from 0.3.0 so existing confirmations survive the update.
         val BACKGROUND_CONFIRMED = booleanPreferencesKey("xiaomi_background_confirmed_v1")

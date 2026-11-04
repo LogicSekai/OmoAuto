@@ -76,4 +76,23 @@ class VideoGeometryTest {
         // Letterboxed preview (taller view): content is centred vertically
         assertEquals(640 to 360, geo.previewToSource(420f, 180f + 100f, 960, 560))
     }
+
+    @Test
+    fun `preview touches map to pixels of the UI area`() {
+        val geo = VideoGeometry.compute(960, 1280, 120, 45) // UI area 1120 x 360, shown at (0,45)-(840,315)
+        assertEquals(0 to 0, geo.previewToTouch(0f, 45f, 960, 360))
+        assertEquals(560 to 180, geo.previewToTouch(420f, 180f, 960, 360))
+        assertEquals(1119 to 359, geo.previewToTouch(839.9f, 314.9f, 960, 360))
+        // Same point on a half-size preview, and in a letterboxed (taller) view.
+        assertEquals(560 to 180, geo.previewToTouch(210f, 90f, 480, 180))
+        assertEquals(560 to 180, geo.previewToTouch(420f, 280f, 960, 560))
+        // Margins are outside unless clamped at the end of a drag.
+        assertNull(geo.previewToTouch(900f, 180f, 960, 360))
+        assertEquals(1118 to 0, geo.previewToTouch(900f, 0f, 960, 360, clamp = true))
+        // Custom edges (right 60, no top/bottom): UI area 1200 x 480 fills the display height.
+        val custom = VideoGeometry.compute(960, 1280, left = 0, top = 0, right = 60, bottom = 0)
+        assertEquals(0 to 0, custom.previewToTouch(0f, 0f, 960, 360))
+        assertEquals(600 to 240, custom.previewToTouch(450f, 180f, 960, 360))
+        assertEquals(1199 to 479, custom.previewToTouch(899.9f, 359.9f, 960, 360))
+    }
 }

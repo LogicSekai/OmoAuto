@@ -146,8 +146,9 @@ internal object AaMessages {
         .toByteArray()
 
     /**
-     * Single-finger touch at ([x], [y]) in Android Auto's video coordinates (the full frame,
-     * margins included). Input report field 3 = touch event: pointers, action index, action.
+     * Single-finger touch at ([x], [y]) in pixels of Android Auto's UI area (the video frame
+     * without the margins, (0, 0) at its top-left corner). Input report field 3 = touch
+     * event: pointers, action index, action.
      */
     fun touchEvent(timestamp: Long, action: Int, x: Int, y: Int): ByteArray = ProtoWriter()
         .varint(1, timestamp)
@@ -190,16 +191,20 @@ internal object AaMessages {
                     varint(5, 1) // available while in call
                 }
             }
-            // 3: input source (keys + rotary, and a touch screen the size of the video frame so
-            //    the phone preview can act as a touchpad)
+            // 3: input source (keys + rotary, and a touch screen the size of the UI area – the
+            //    video frame minus the margins – so touch pixels map 1:1 onto Android Auto's UI
+            //    whatever margins are set; see docs/PROTOCOL.md)
             .message(1) {
                 varint(1, AaChannel.INPUT)
                 message(4) {
                     AaKeyCode.ANNOUNCED.forEach { varint(1, it) }
                     if (config.touchscreen) {
                         message(2) {
-                            varint(1, config.video.sourceWidth)
-                            varint(2, config.video.sourceHeight)
+                            varint(1, config.video.contentWidth)
+                            varint(2, config.video.contentHeight)
+                            // 3: touch-screen type, CAPACITIVE (as real head units report it;
+                            //    without it Android Auto listed its car display as "-touch").
+                            varint(3, 1)
                         }
                     }
                 }

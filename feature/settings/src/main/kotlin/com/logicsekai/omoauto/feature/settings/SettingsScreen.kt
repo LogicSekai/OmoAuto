@@ -21,14 +21,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Delete
-import androidx.compose.material.icons.rounded.Edit
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
@@ -49,8 +43,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import com.logicsekai.omoauto.data.settings.AppTheme
 import com.logicsekai.omoauto.data.settings.FitMargins
+import com.logicsekai.omoauto.data.settings.AaTheme
+import com.logicsekai.omoauto.data.settings.MarginColor
 import com.logicsekai.omoauto.data.settings.OmoSettings
-import com.logicsekai.omoauto.data.settings.SavedBike
 import com.logicsekai.omoauto.data.settings.SettingsRepository
 import com.logicsekai.omoauto.designsystem.component.OmoCard
 import com.logicsekai.omoauto.designsystem.component.OmoTopBar
@@ -70,20 +65,19 @@ class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(
     fun setRightMargin(value: Int) = edit { setRightMargin(value) }
     fun setVerticalMargin(value: Int) = edit { setVerticalMargin(value) }
     fun setCustomFit(value: Boolean) = edit { setCustomFit(value) }
+    fun setMarginColor(value: MarginColor) = edit { setMarginColor(value) }
     fun setCustomMargins(value: FitMargins) = edit { setCustomMargins(value) }
     fun setBoundedQueue(value: Boolean) = edit { setBoundedLiveQueue(value) }
     fun setDisplayNight(value: Boolean) = edit { setDisplayNightTheme(value) }
-    fun setAaNight(value: Boolean) = edit { setAndroidAutoNightMode(value) }
+    fun setAaTheme(value: AaTheme) = edit { setAaTheme(value) }
+    fun setNightHours(start: Int, end: Int) = edit { setNightHours(start, end) }
     fun setAutoReconnect(value: Boolean) = edit { setAutoReconnect(value) }
     fun setTheme(value: AppTheme) = edit { setAppTheme(value) }
-    fun renameBike(address: String, name: String) = edit { renameBike(address, name) }
-    fun forgetBike(address: String) = edit { forgetBike(address) }
 }
 
 @Composable
 fun SettingsRoute(viewModel: SettingsViewModel, onBack: () -> Unit) {
     val s by viewModel.settings.collectAsStateWithLifecycle()
-    var renaming by remember { mutableStateOf<SavedBike?>(null) }
 
     Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).statusBarsPadding()) {
         OmoTopBar(title = stringResource(R.string.settings_title), onBack = onBack)
@@ -147,11 +141,46 @@ fun SettingsRoute(viewModel: SettingsViewModel, onBack: () -> Unit) {
                     onSelect = viewModel::setVerticalMargin,
                 )
                 }
+                ChoiceRow(
+                    title = stringResource(R.string.settings_margin_color),
+                    caption = stringResource(R.string.settings_margin_color_caption),
+                    options = MarginColor.entries.toList(),
+                    selected = s.marginColor,
+                    label = {
+                        when (it) {
+                            MarginColor.DARK -> stringResource(R.string.settings_margin_dark)
+                            MarginColor.LIGHT -> stringResource(R.string.settings_margin_light)
+                        }
+                    },
+                    onSelect = viewModel::setMarginColor,
+                )
             }
 
             Section(stringResource(R.string.settings_appearance)) {
                 ToggleRow(stringResource(R.string.settings_display_night), stringResource(R.string.settings_display_night_caption), s.displayNightTheme, viewModel::setDisplayNight)
-                ToggleRow(stringResource(R.string.settings_aa_night), stringResource(R.string.settings_aa_night_caption), s.androidAutoNightMode, viewModel::setAaNight)
+                ChoiceRow(
+                    title = stringResource(R.string.settings_aa_theme),
+                    caption = stringResource(R.string.settings_aa_theme_caption),
+                    options = AaTheme.entries.toList(),
+                    selected = s.aaTheme,
+                    label = {
+                        when (it) {
+                            AaTheme.AUTO -> stringResource(R.string.settings_aa_theme_auto)
+                            AaTheme.LIGHT -> stringResource(R.string.settings_aa_theme_light)
+                            AaTheme.DARK -> stringResource(R.string.settings_aa_theme_dark)
+                            AaTheme.CLOCK -> stringResource(R.string.settings_aa_theme_clock)
+                        }
+                    },
+                    onSelect = viewModel::setAaTheme,
+                )
+                if (s.aaTheme == AaTheme.CLOCK) {
+                    HourRow(stringResource(R.string.settings_night_start), s.nightStartHour) {
+                        viewModel.setNightHours(it, s.nightEndHour)
+                    }
+                    HourRow(stringResource(R.string.settings_night_end), s.nightEndHour) {
+                        viewModel.setNightHours(s.nightStartHour, it)
+                    }
+                }
                 ChoiceRow(
                     title = stringResource(R.string.settings_app_theme),
                     caption = null,
@@ -170,42 +199,9 @@ fun SettingsRoute(viewModel: SettingsViewModel, onBack: () -> Unit) {
 
             Section(stringResource(R.string.settings_connection)) {
                 ToggleRow(stringResource(R.string.settings_auto_reconnect), stringResource(R.string.settings_auto_reconnect_caption), s.autoReconnect, viewModel::setAutoReconnect)
-                if (s.savedBikes.isEmpty()) {
-                    Text(stringResource(R.string.settings_no_bikes), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-                s.savedBikes.forEach { bike ->
-                    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) {
-                            Text(bike.name, style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.onSurface)
-                            Text(bike.address, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                        IconButton(onClick = { renaming = bike }) {
-                            Icon(Icons.Rounded.Edit, contentDescription = stringResource(R.string.settings_rename))
-                        }
-                        IconButton(onClick = { viewModel.forgetBike(bike.address) }) {
-                            Icon(Icons.Rounded.Delete, contentDescription = stringResource(R.string.settings_forget))
-                        }
-                    }
-                }
             }
             Spacer(Modifier.height(24.dp))
         }
-    }
-
-    renaming?.let { bike ->
-        var name by remember(bike) { mutableStateOf(bike.name) }
-        AlertDialog(
-            onDismissRequest = { renaming = null },
-            title = { Text(stringResource(R.string.settings_rename)) },
-            text = { OutlinedTextField(value = name, onValueChange = { name = it }, singleLine = true) },
-            confirmButton = {
-                TextButton(onClick = {
-                    if (name.isNotBlank()) viewModel.renameBike(bike.address, name.trim())
-                    renaming = null
-                }) { Text(stringResource(R.string.settings_save)) }
-            },
-            dismissButton = { TextButton(onClick = { renaming = null }) { Text(stringResource(R.string.settings_cancel)) } },
-        )
     }
 }
 
@@ -247,6 +243,17 @@ private fun <T> ChoiceRow(
                 )
             }
         }
+    }
+}
+
+/** One hour of the day with − / + buttons (wraps around midnight). */
+@Composable
+private fun HourRow(title: String, hour: Int, onChange: (Int) -> Unit) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(title, style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.weight(1f))
+        TextButton(onClick = { onChange((hour + 23) % 24) }) { Text("−", style = MaterialTheme.typography.titleMedium) }
+        Text("%02d:00".format(hour), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+        TextButton(onClick = { onChange((hour + 1) % 24) }) { Text("+", style = MaterialTheme.typography.titleMedium) }
     }
 }
 

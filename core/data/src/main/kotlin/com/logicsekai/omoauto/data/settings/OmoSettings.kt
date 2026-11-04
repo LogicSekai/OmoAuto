@@ -20,15 +20,22 @@ data class OmoSettings(
     /** Use [customMargins] (all four edges typed in by the user) instead of the presets above. */
     val customFit: Boolean = false,
     val customMargins: FitMargins = FitMargins.DEFAULT,
+    /** Colour of the free edges around Android Auto's picture on the display. */
+    val marginColor: MarginColor = MarginColor.DARK,
     /** Drop stale video instead of buffering (lower latency). */
     val boundedLiveQueue: Boolean = true,
     /** Theme answered to the motorcycle display. */
     val displayNightTheme: Boolean = true,
-    /** Night-mode sensor value reported to Android Auto. */
-    val androidAutoNightMode: Boolean = false,
+    /**
+     * Light/dark for Android Auto, sent through its night-mode sensor. Android Auto's own frame
+     * and rail stay dark; this switches Maps and apps that follow it between day and night.
+     */
+    val aaTheme: AaTheme = AaTheme.AUTO,
+    /** [AaTheme.CLOCK]: hour (0–23) dark starts. */
+    val nightStartHour: Int = 18,
+    /** [AaTheme.CLOCK]: hour (0–23) light starts again. */
+    val nightEndHour: Int = 6,
     val appTheme: AppTheme = AppTheme.SYSTEM,
-    val savedBikes: List<SavedBike> = emptyList(),
-    val lastBikeAddress: String? = null,
     /** Reconnect to the last motorcycle automatically when the link drops. */
     val autoReconnect: Boolean = true,
     /** User confirmed the vendor auto-start / battery step (see PhoneVendor). */
@@ -82,4 +89,26 @@ data class FitMargins(val left: Int, val top: Int, val right: Int, val bottom: I
 
 enum class AppTheme { SYSTEM, LIGHT, DARK }
 
-data class SavedBike(val address: String, val name: String)
+/**
+ * Theme for Android Auto (day/night). AUTO follows the phone's dark theme; CLOCK is dark from [OmoSettings.nightStartHour] until
+ * [OmoSettings.nightEndHour].
+ */
+enum class AaTheme {
+    AUTO, LIGHT, DARK, CLOCK;
+
+    /** True when Android Auto should be in night mode right now. */
+    fun isNight(phoneDark: Boolean, hour: Int, startHour: Int, endHour: Int): Boolean = when (this) {
+        AUTO -> phoneDark
+        LIGHT -> false
+        DARK -> true
+        CLOCK -> when {
+            startHour == endHour -> false
+            startHour < endHour -> hour in startHour until endHour
+            else -> hour >= startHour || hour < endHour
+        }
+    }
+}
+
+/** Free edges on the motorcycle display: black (default) or light. */
+enum class MarginColor { DARK, LIGHT }
+

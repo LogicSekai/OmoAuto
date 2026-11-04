@@ -19,8 +19,6 @@
     <string name="settings_appearance">Appearance</string>
     <string name="settings_display_night">Dark display theme</string>
     <string name="settings_display_night_caption">Theme reported to the motorcycle display.</string>
-    <string name="settings_aa_night">Android Auto night mode</string>
-    <string name="settings_aa_night_caption">Ask Android Auto for its dark map colours.</string>
     <string name="settings_app_theme">App theme</string>
     <string name="settings_theme_system">System</string>
     <string name="settings_theme_light">Light</string>
@@ -28,9 +26,6 @@
     <string name="settings_connection">Connection</string>
     <string name="settings_auto_reconnect">Reconnect automatically</string>
     <string name="settings_auto_reconnect_caption">Rejoin the motorcycle if the Wi-Fi Direct link drops.</string>
-    <string name="settings_no_bikes">No saved motorcycles yet.</string>
-    <string name="settings_rename">Rename</string>
-    <string name="settings_forget">Forget</string>
     <string name="settings_save">Save</string>
     <string name="settings_cancel">Cancel</string>
     <string name="settings_custom_fit">Custom edges</string>
@@ -43,4 +38,16 @@
     <string name="settings_custom_fit_invalid">Too much space: left + right must be at most 480 and top + bottom at most 240.</string>
     <string name="settings_custom_fit_result">Android Auto picture: %1$d × %2$d</string>
     <string name="settings_custom_fit_reset">Reset</string>
+    <string name="settings_aa_theme">Android Auto theme</string>
+    <string name="settings_aa_theme_caption">Day or night for Android Auto: Maps and apps that follow it. Android Auto\'s own frame and icon bar always stay dark. Automatic follows the phone\'s theme. Changes apply at once.</string>
+    <string name="settings_aa_theme_auto">Automatic</string>
+    <string name="settings_aa_theme_light">Light</string>
+    <string name="settings_aa_theme_dark">Dark</string>
+    <string name="settings_aa_theme_clock">By time</string>
+    <string name="settings_night_start">Dark from</string>
+    <string name="settings_night_end">Light from</string>
+    <string name="settings_margin_color">Edge colour</string>
+    <string name="settings_margin_color_caption">Colour of the free space around the picture on the motorcycle display. Changes apply at once.</string>
+    <string name="settings_margin_dark">Dark</string>
+    <string name="settings_margin_light">Light</string>
 </resources>

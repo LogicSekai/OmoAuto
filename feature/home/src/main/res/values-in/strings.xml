@@ -5,16 +5,11 @@
     <string name="home_chip_live">Tampil di motor</string>
     <string name="home_chip_linked">Motor terhubung</string>
     <string name="home_chip_offline">Belum terhubung</string>
-
-    <string name="home_my_bikes">Motor saya (%1$d)</string>
     <string name="home_search_action">Cari</string>
-    <string name="home_add_bike">Tambah motor</string>
     <string name="home_add_bike_caption">Nyalakan motor lalu cari di sekitar</string>
     <string name="home_bike_connected">Terhubung</string>
-    <string name="home_bike_tap_to_connect">Ketuk untuk menghubungkan</string>
-    <string name="home_bike_menu_text">Putuskan koneksi dari motor ini, atau lupakan agar tidak muncul lagi di sini.</string>
+    <string name="home_bike_menu_text">Putuskan koneksi dari motor ini? Tidak ada yang disimpan: lain kali cukup cari lagi lalu ketuk motornya.</string>
     <string name="home_disconnect">Putuskan</string>
-    <string name="home_forget">Lupakan</string>
 
     <string name="home_start_aa">Mulai Android Auto</string>
     <string name="home_stop_aa">Hentikan Android Auto</string>
@@ -95,4 +90,8 @@
     <string name="home_display_taken">Layar motor sedang dipakai aplikasi HP lain. Tutup aplikasi yang terhubung ke motor, lalu tutup dan buka lagi Navigasi di motor. OmoAuto akan tersambung sendiri.</string>
     <string name="home_action_app_info">Buka info %1$s</string>
     <string name="home_status_display_taken">Layar dipakai aplikasi lain</string>
+    <string name="home_bike_title">Motor</string>
+    <string name="home_bike_connecting">Menghubungkan…</string>
+    <string name="home_find_bike">Cari motor</string>
+    <string name="home_cancel">Batal</string>
 </resources>

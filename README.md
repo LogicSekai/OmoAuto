@@ -31,7 +31,7 @@ Package `com.logicsekai.omoauto` · dibuat oleh komunitas [**Logic Sekai**](http
 - **Kontrol dari HP**: pratinjau langsung yang bisa disentuh, mode **Media**, **Remote** (D-pad),
   dan **Sentuh** layar penuh.
 - **OmoWeb**: tonton YouTube/web di layar motor lewat aplikasi pendamping, dikendalikan dari OmoAuto.
-- **Banyak motor tersimpan**, sambung ulang otomatis, mode malam, tema layar motor.
+- **Cari lalu ketuk motor** (tanpa daftar tersimpan), sambung ulang otomatis, mode malam, tema layar motor.
 - **Penyesuaian layar**: tepi bawaan atau tepi kustom kiri/kanan/atas/bawah.
 - **Setup bertahap** dengan panduan per merek HP (Xiaomi, Samsung, OPPO/realme, vivo, Huawei, Infinix, dll.).
 - **Diagnostik** dengan skor koneksi, statistik video, salin/bagikan log.

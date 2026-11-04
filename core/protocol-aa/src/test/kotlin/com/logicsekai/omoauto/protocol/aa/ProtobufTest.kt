@@ -62,10 +62,11 @@ class ProtobufTest {
         assertEquals(360L, video.varint(4))
         assertEquals("OmoAuto", msg.string(3))
         assertTrue(services[2].message(4)!!.has(1))
-        // Touch screen announced with the video frame size
+        // Touch screen announced with the UI area size (frame minus margins)
         val touch = services[2].message(4)!!.message(2)!!
-        assertEquals(1280L, touch.varint(1))
-        assertEquals(720L, touch.varint(2))
+        assertEquals(1120L, touch.varint(1))
+        assertEquals(360L, touch.varint(2))
+        assertEquals(1L, touch.varint(3)) // capacitive
         // ...and left out when disabled
         val noTouch = ProtoReader.parse(AaMessages.serviceDiscoveryResponse(config.copy(touchscreen = false)))
         assertEquals(false, noTouch.messages(1)[2].message(4)!!.has(2))

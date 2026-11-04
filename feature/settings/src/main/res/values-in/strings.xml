@@ -19,8 +19,6 @@
     <string name="settings_appearance">Tampilan</string>
     <string name="settings_display_night">Tema gelap di layar motor</string>
     <string name="settings_display_night_caption">Tema yang dilaporkan ke layar motor.</string>
-    <string name="settings_aa_night">Mode malam Android Auto</string>
-    <string name="settings_aa_night_caption">Minta Android Auto memakai warna peta gelap.</string>
     <string name="settings_app_theme">Tema aplikasi</string>
     <string name="settings_theme_system">Sistem</string>
     <string name="settings_theme_light">Terang</string>
@@ -28,9 +26,6 @@
     <string name="settings_connection">Koneksi</string>
     <string name="settings_auto_reconnect">Sambung ulang otomatis</string>
     <string name="settings_auto_reconnect_caption">Hubungkan lagi ke motor jika Wi-Fi Direct terputus.</string>
-    <string name="settings_no_bikes">Belum ada motor tersimpan.</string>
-    <string name="settings_rename">Ubah nama</string>
-    <string name="settings_forget">Lupakan</string>
     <string name="settings_save">Simpan</string>
     <string name="settings_cancel">Batal</string>
     <string name="settings_custom_fit">Tepi kustom</string>
@@ -43,4 +38,16 @@
     <string name="settings_custom_fit_invalid">Terlalu besar: kiri + kanan maksimal 480 dan atas + bawah maksimal 240.</string>
     <string name="settings_custom_fit_result">Gambar Android Auto: %1$d × %2$d</string>
     <string name="settings_custom_fit_reset">Atur ulang</string>
+    <string name="settings_aa_theme">Tema Android Auto</string>
+    <string name="settings_aa_theme_caption">Siang atau malam untuk Android Auto: peta dan aplikasi yang mengikutinya. Bingkai dan bilah ikon Android Auto selalu gelap. Otomatis mengikuti tema HP. Langsung berlaku.</string>
+    <string name="settings_aa_theme_auto">Otomatis</string>
+    <string name="settings_aa_theme_light">Terang</string>
+    <string name="settings_aa_theme_dark">Gelap</string>
+    <string name="settings_aa_theme_clock">Mengikuti jam</string>
+    <string name="settings_night_start">Gelap mulai</string>
+    <string name="settings_night_end">Terang mulai</string>
+    <string name="settings_margin_color">Warna tepi</string>
+    <string name="settings_margin_color_caption">Warna ruang kosong di sekitar gambar pada layar motor. Perubahan langsung berlaku.</string>
+    <string name="settings_margin_dark">Gelap</string>
+    <string name="settings_margin_light">Terang</string>
 </resources>

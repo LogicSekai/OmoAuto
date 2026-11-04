@@ -114,7 +114,13 @@ acknowledged with `ACK (0x8004)` {session, 1}.
 ### Input (channel 3)
 `BINDING_REQUEST (0x8002) → BINDING_RESPONSE (0x8003)`, then `EVENT (0x8001)`:
 key = `{1: ts, 4: {1: {1: code, 2: down, 3: 0, 4: false}}}` (down + up),
-rotary = `{1: ts, 6: {1: {1: 65536, 2: delta}}}`.
+rotary = `{1: ts, 6: {1: {1: 65536, 2: delta}}}`,
+touch = `{1: ts, 3: {1: {1: x, 2: y, 3: pointer 0}, 2: 0, 3: action (0 down, 1 up, 2 move)}}`.
+Touch coordinates are **pixels of Android Auto's UI area** (the video frame minus the margins),
+(0, 0) at its top-left corner. The touch screen is announced with that same size (video size minus
+margins), so the coordinates are exact with any margins.
+Measured on Android Auto 17.9: video-frame coordinates (margin offset added) hit one rail icon too
+low, and scaling the UI area to 1280 × 720 overshot even more.
 
 ---
 

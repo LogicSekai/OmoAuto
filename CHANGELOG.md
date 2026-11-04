@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.4.0 — 2026-11-04
+
+### Baru
+- **Pengaturan › Tampilan › Tema Android Auto:** empat mode siang/malam untuk Android Auto (peta
+  dan aplikasi yang mengikutinya): **Otomatis** (mengikuti tema gelap HP, bawaan), **Terang**,
+  **Gelap**, dan **Mengikuti jam** (jam mulai gelap dan terang bisa diatur, bawaan 18:00–06:00).
+  Langsung berlaku tanpa menyambung ulang. Bingkai dan bilah ikon Android Auto memang selalu gelap.
+  Menggantikan sakelar "Mode malam Android Auto"; yang sebelumnya menyala menjadi **Gelap**.
+- **Pengaturan › Penyesuaian layar › Warna tepi:** ruang kosong di sekitar gambar di layar motor
+  bisa **Gelap** (bawaan) atau **Terang**, terpisah dari tema Android Auto. Langsung berlaku.
+
+### Berubah
+- **Motor tidak lagi disimpan.** Beranda kini cukup **Cari motor** lalu ketuk motornya; daftar
+  "Motor saya" dan daftar motor di Pengaturan dihapus. Sebelumnya motor tersimpan sering gagal
+  tersambung lagi dan harus dihapus lalu ditambahkan ulang: Wi-Fi Direct hanya bisa bergabung ke
+  perangkat yang baru saja ditemukan Android, dan motor tersimpan disambungkan tanpa mencari dulu.
+  Sekarang setiap sambungan (termasuk sambung ulang otomatis saat koneksi putus) selalu mencari motor
+  terlebih dahulu dan baru bergabung setelah motor terlihat.
+
+### Perbaikan
+- **Kontrol › Sentuh lebih akurat:** koordinat sentuhan kini berupa piksel area UI Android Auto
+  (tanpa margin, tanpa penskalaan). Sebelumnya margin ikut dihitung sehingga ketukan meleset satu
+  ikon ke bawah (mis. Spotify membuka Telepon). Gerakan yang tidak mengubah titik sentuh tidak lagi
+  dikirim (antrean input tidak penuh), dan gestur kembali sistem tidak lagi menelan sentuhan di tepi
+  pratinjau.
+- **Sentuh tetap presisi dengan tepi kustom:** layar sentuh kini diumumkan ke Android Auto seukuran
+  area UI (gambar tanpa margin), sehingga titik sentuh cocok berapa pun tepi yang diatur. Layar
+  sentuh juga diumumkan sebagai kapasitif, seperti head unit sungguhan.
+- **Scroll di aplikasi HP (OmoWeb, dll.) tanpa tombol Kembali/Exit:** Android Auto menganggap geseran
+  yang dimulai dalam 100 dp dari tepi layar sebagai gestur sistem dan memunculkan toolbar Kembali/Exit.
+  Di layar 360 px, zona atas + bawah menutupi lebih dari separuh tinggi, jadi hampir setiap scroll
+  memicunya. Kini geseran yang dimulai di zona tepi dikirim mulai dari titik terdekat di luar zona
+  (jarak geser tetap sama); ketukan dan tekan lama tetap di posisi aslinya.
+
 ## 0.3.1 — 2026-11-01
 
 - **Pembaruan dalam aplikasi:** OmoAuto memeriksa GitHub Releases (otomatis sekitar dua kali sehari,

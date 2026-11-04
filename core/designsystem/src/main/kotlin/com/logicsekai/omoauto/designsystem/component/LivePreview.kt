@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.systemGestureExclusion
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -88,9 +89,12 @@ fun LivePreview(
             },
         )
         // Touch layer on top of the TextureView: the preview works as a touchpad for Android Auto.
+        // With touch on, the system back gesture is kept off the picture's edges, where Android
+        // Auto's app rail sits; otherwise edge taps and swipes were swallowed.
         Box(
             Modifier
                 .matchParentSize()
+                .then(if (onTouch != null) Modifier.systemGestureExclusion() else Modifier)
                 .pointerInput(Unit) {
                     awaitEachGesture {
                         val down = awaitFirstDown()

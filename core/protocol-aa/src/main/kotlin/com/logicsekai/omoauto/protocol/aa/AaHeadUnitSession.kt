@@ -75,6 +75,10 @@ class AaHeadUnitSession(
     @Volatile private var tls: TlsBridge? = null
     @Volatile private var encrypted = false
     @Volatile private var inputBound = false
+    /** Current night-mode value; starts at [HeadUnitConfig.nightMode], changed by [setNightMode]. */
+    @Volatile private var nightMode = config.nightMode
+    /** Android Auto subscribed to the night-mode sensor on the current connection. */
+    @Volatile private var nightSensorStarted = false
     @Volatile private var phoneExited = false
     @Volatile var phase: Phase = Phase.IDLE
         private set
@@ -137,6 +141,23 @@ class AaHeadUnitSession(
         send(AaChannel.INPUT, 0, AaInput.EVENT, AaMessages.rotaryEvent(System.nanoTime(), delta))
     }
 
+    /**
+     * Switches Android Auto between its day and night theme while running, like a head unit's
+     * light sensor would. Remembered and sent on the next sensor start if not subscribed yet.
+     */
+    fun setNightMode(night: Boolean) {
+        if (nightMode == night) return
+        nightMode = night
+        if (!nightSensorStarted) return
+        sender?.execute {
+            try {
+                send(AaChannel.SENSOR, 0, AaSensor.EVENT, AaMessages.nightModeEvent(night))
+            } catch (e: Exception) {
+                OmoLog.w(TAG, "Night mode send failed", e)
+            }
+        }
+    }
+
     private fun enqueueInput(block: () -> Unit) {
         if (!inputBound) return
         sender?.execute {
@@ -186,6 +207,7 @@ class AaHeadUnitSession(
                 closeSocket()
                 encrypted = false
                 inputBound = false
+                nightSensorStarted = false
                 tls = null
             }
             endReason = outcome.reason
@@ -349,8 +371,10 @@ class AaHeadUnitSession(
         when (type) {
             AaSensor.TYPE_DRIVING_STATUS ->
                 send(AaChannel.SENSOR, 0, AaSensor.EVENT, AaMessages.drivingStatusEvent())
-            AaSensor.TYPE_NIGHT_MODE ->
-                send(AaChannel.SENSOR, 0, AaSensor.EVENT, AaMessages.nightModeEvent(config.nightMode))
+            AaSensor.TYPE_NIGHT_MODE -> {
+                send(AaChannel.SENSOR, 0, AaSensor.EVENT, AaMessages.nightModeEvent(nightMode))
+                nightSensorStarted = true
+            }
         }
         status("Sensor $type started")
     }
